@@ -1,25 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+
+import {Box, Grid} from '@chakra-ui/core'
+import NameForm from './components/NameForm'
+
 
 function App() {
+
+  const submit = (name) => {
+    // handle socket submit
+    console.log(`submit ${name}`)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+        <Grid className="container">
+          <Box className="box">
+              <NameForm submit={submit} />
+          </Box>
+        </Grid>
+  )
 }
 
 export default App;
