@@ -1,9 +1,9 @@
 import React from 'react';
 
-import {Box, Grid} from '@chakra-ui/core'
+import { Box, Grid } from '@chakra-ui/core'
 
 
-function Waiting() {
+function Round() {
 
   const submit = (name) => {
     // handle socket submit
@@ -11,11 +11,13 @@ function Waiting() {
   }
 
   return (
-        <Grid className="container">
-          <Box className="box">
-          </Box>
-        </Grid>
+    <Grid className="container">
+      <Box className="box">
+        {/* <NameForm submit={submit} /> */}
+        <h1> HELLO Round </h1>
+      </Box>
+    </Grid>
   )
 }
 
-export default Waiting;
+export default Round;
