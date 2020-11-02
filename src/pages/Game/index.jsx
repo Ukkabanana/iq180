@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Box, Grid} from '@chakra-ui/core'
+import { Box, Grid } from '@chakra-ui/core'
 
 
 function Waiting() {
@@ -11,11 +11,12 @@ function Waiting() {
   }
 
   return (
-        <Grid className="container">
-          <Box className="box">
-              <NameForm submit={submit} />
-          </Box>
-        </Grid>
+    <Grid className="container">
+      <Box className="box">
+        {/* <NameForm submit={submit} /> */}
+        <h1> HELLO Game </h1>
+      </Box>
+    </Grid>
   )
 }
 

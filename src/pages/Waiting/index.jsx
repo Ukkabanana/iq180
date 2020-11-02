@@ -1,22 +1,23 @@
 import React from 'react';
 
-import {Box, Grid} from '@chakra-ui/core'
+import { Box, Grid } from '@chakra-ui/core'
 
 
 function Waiting() {
 
-  const submit = (name) => {
-    // handle socket submit
-    console.log(`submit ${name}`)
-  }
+    const submit = (name) => {
+        // handle socket submit
+        console.log(`submit ${name}`)
+    }
 
-  return (
+    return (
         <Grid className="container">
-          <Box className="box">
-              <NameForm submit={submit} />
-          </Box>
+            <Box className="box">
+                {/* <NameForm submit={submit} /> */}
+                <h1> HELLO Waiting </h1>
+            </Box>
         </Grid>
-  )
+    )
 }
 
 export default Waiting;
