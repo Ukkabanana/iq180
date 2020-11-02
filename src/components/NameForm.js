@@ -22,6 +22,13 @@ function NameForm({ submit }) {// to handle add todo
         setName("")
     };
 
+    const handleKeyDown = e => {
+        if(e.key === 'Enter'){
+            submit(name);
+            setName("")
+        }
+    }
+
     return (
         <ThemeProvider>
             <CSSReset />
@@ -39,6 +46,7 @@ function NameForm({ submit }) {// to handle add todo
                             <Input
                                 placeholder="Player name"   
                                 value={name}
+                                onKeyDown={handleKeyDown}
                                 onChange={e => setName(e.target.value)} 
                             />
                         </FormControl>
