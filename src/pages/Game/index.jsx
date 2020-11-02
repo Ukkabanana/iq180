@@ -13,7 +13,6 @@ function Waiting() {
   return (
         <Grid className="container">
           <Box className="box">
-              <NameForm submit={submit} />
           </Box>
         </Grid>
   )
