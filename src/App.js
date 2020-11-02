@@ -6,7 +6,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import { Box, Grid } from '@chakra-ui/core'
+import { Box, Grid, CSSReset, ThemeProvider} from '@chakra-ui/core'
 import NameForm from './components/NameForm'
 import Waiting from './pages/Waiting/index'
 import Game from './pages/Game/index'
@@ -21,30 +21,33 @@ function App() {
   }
 
   return (
-    <Router>
+    <ThemeProvider>
+      <CSSReset/>
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <Grid className="container">
+              <Box className="box">
+                <NameForm submit={submit} />
+              </Box>
+            </Grid>
+          </Route>
+          <Route path="/game">
+            <Game />
+          </Route>
+          <Route path="/waiting">
+            <Waiting />
+          </Route>
+          <Route path="/round">
+            <Round />
+          </Route>
+          <Route path="/result">
+            <Result />
+          </Route>
+        </Switch>
+      </Router>
+    </ThemeProvider>
 
-      <Switch>
-        <Route exact path="/">
-          <Grid className="container">
-            <Box className="box">
-              <NameForm submit={submit} />
-            </Box>
-          </Grid>
-        </Route>
-        <Route path="/game">
-          <Game />
-        </Route>
-        <Route path="/waiting">
-          <Waiting />
-        </Route>
-        <Route path="/round">
-          <Round />
-        </Route>
-        <Route path="/result">
-          <Result />
-        </Route>
-      </Switch>
-    </Router>
 
   )
 }
