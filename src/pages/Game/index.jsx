@@ -14,7 +14,7 @@ function Waiting() {
     <Grid className="container">
       <Box className="box">
         {/* <NameForm submit={submit} /> */}
-        <h1> HELLO Game </h1>
+        <h1> HELLO Game Room </h1>
       </Box>
     </Grid>
   )
