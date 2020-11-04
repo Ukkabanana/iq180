@@ -32,6 +32,7 @@ function App() {
   }, [])
 
 
+
   // const goToGame = () => {
   //   history.push("/game")
   // };
@@ -61,7 +62,7 @@ function App() {
             <Game />
           </Route>
           <Route path="/waiting">
-            <Waiting joinRoomResult={joinRoomResult} />
+            <Waiting joinRoomResult={joinRoomResult} socket={socket} />
           </Route>
           <Route path="/round">
             <Round />

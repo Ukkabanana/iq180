@@ -8,7 +8,7 @@ import {
     Route
   } from "react-router-dom";
 
-function Waiting() {
+function Waiting(props) {
 
     const submit = (name) => {
         // handle socket submit
@@ -24,7 +24,7 @@ function Waiting() {
             <Box className="box">
                 <h1> HELLO Waiting </h1>
                 <h1>Players</h1>
-                <ShowPlayer player1={player1} player2={player2} />
+                <ShowPlayer player1={player1} player2={player2} socket={props.socket}/>
             </Box>
         </Grid>
 
