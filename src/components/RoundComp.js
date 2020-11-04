@@ -16,22 +16,23 @@ import {
 } from '@chakra-ui/core';
 import { ThemeProvider } from 'emotion-theming';
 
-function ResultComp() {
-    const [name, setName] = useState("Player 1");
-    const [result, setResult] = useState("Victory!");
+function RoundComp() {
+    const [round, setRound] = useState(1);
+    const [eachResult, setEachResult] = useState("You win!");
+    const [score, setScore] = useState("You win!");
+    const [time, setTime] = useState("You win!");
     return (
         <ThemeProvider>
             <CSSReset />
             <Box borderWidth="1px" rounded="lg" mx="24" my="32" boxShadow="sm">
                 <Grid className="container">
                     <Box className="box">
-                        <h3> {name}'s </h3>
-                        <h1>{result}</h1>
-                        <Link to="/">
-                            <Button bg="teal">Quit</Button>
-                        </Link>
-                        <Link to="/waiting">
-                            <Button bg="teal">Play again</Button>
+                        <h3> Round {round} </h3>
+                        <h2> {eachResult}</h2>
+                        <h2>Score : {score}</h2>
+                        <h2>Time used : {time}</h2>
+                        <Link to="/game">
+                            <Button bg="teal">Next round</Button>
                         </Link>
                     </Box>
                 </Grid>
@@ -40,4 +41,4 @@ function ResultComp() {
     );
 }
 
-export default ResultComp;
+export default RoundComp;
