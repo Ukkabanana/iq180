@@ -1,9 +1,8 @@
 import React from 'react';
-
+import ResultComp from  '../../components/ResultComp'
 import { Box, Grid } from '@chakra-ui/core'
 
-
-function Waiting() {
+function Result() {
 
   const submit = (name) => {
     // handle socket submit
@@ -11,13 +10,9 @@ function Waiting() {
   }
 
   return (
-    <Grid className="container">
-      <Box className="box">
-        {/* <NameForm submit={submit} /> */}
-        <h1> HELLO Result </h1>
-      </Box>
-    </Grid>
+    <ResultComp />
   )
 }
 
-export default Waiting;
+export default Result;
+

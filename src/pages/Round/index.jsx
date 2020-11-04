@@ -1,20 +1,16 @@
 import React from 'react';
-
+import RoundComp from  '../../components/RoundComp'
 import { Box, Grid } from '@chakra-ui/core'
 
 
 function Round() {
 
-  const submit = (name) => {
-    // handle socket submit
-    console.log(`submit ${name}`)
-  }
 
   return (
     <Grid className="container">
       <Box className="box">
         {/* <NameForm submit={submit} /> */}
-        <h1> HELLO Round </h1>
+        <RoundComp />
       </Box>
     </Grid>
   )

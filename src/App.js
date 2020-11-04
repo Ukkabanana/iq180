@@ -7,6 +7,7 @@ import {
   Link,
   useHistory,
 } from "react-router-dom";
+
 import { Box, Grid, Button, ThemeProvider, CSSReset } from '@chakra-ui/core'
 import NameForm from './components/NameForm'
 import Waiting from './pages/Waiting/index'
