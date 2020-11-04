@@ -52,7 +52,7 @@ function App() {
                     my="4"
                   // onClick={goToGame}
                   >
-                    Go to Game
+                    Go to Game naja
                   </Button>
                 </Link>
               </Box>
