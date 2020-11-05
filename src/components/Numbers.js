@@ -20,6 +20,7 @@ function Numbers(props) {
             setNumbers(question.numbers);
             setAnswer(question.expectedAnswer);
         })//wait for result of joining game from backend.
+
     }, [])
 
     return (
