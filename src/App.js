@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -16,7 +16,7 @@ import Round from './pages/Round/index'
 import Result from './pages/Result/index'
 import io from 'socket.io-client'
 function App() {
-  const socket = io("https://netcentric-iq180.herokuapp.com");
+  const socket = useMemo(() => io("https://netcentric-iq180.herokuapp.com"), []);
   let history = useHistory();
   const [joinRoomResult, setJoinRoomResult] = useState({});
   const submit = (name) => {
@@ -30,7 +30,7 @@ function App() {
       setJoinRoomResult(result);
     })//wait for result of joining game from backend.
   }, [])
-
+  
 
 
   // const goToGame = () => {
