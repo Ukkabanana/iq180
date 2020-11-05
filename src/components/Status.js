@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from "react-router-dom";
 import {
     Text,
@@ -8,24 +8,16 @@ import {
     CSSReset,
     Flex
 } from '@chakra-ui/core';
+import { SocketContext } from './Socket';
 
 
-function Status(props) {// to handle status box
+function Status() {// to handle status box
     const [round, setRound] = useState("1");
     const [score, setScore] = useState("0");
-    const [time, setTime] = useState();
-    const [player, setPlayer] = useState("")
 
-    useEffect(() => {
-        props.socket.on("SET_REMAINING_TIME", (countdown) => {
-            setTime(countdown)
-            console.log("time left", countdown)
-        })//wait for result of joining game from backend.
-        props.socket.on("SET_CURRENT_PLAYER", (currentPlayer) => {
-            setPlayer(currentPlayer)
-            console.log(currentPlayer)
-        })
-    }, [])
+
+
+    const { time, currentPlayer } = useContext(SocketContext)
 
 
     return (
@@ -41,7 +33,7 @@ function Status(props) {// to handle status box
                     </Text>
                 </Box>
                 <Box textAlign="center">
-                    <Text fontSize="4xl" fontWeight="800" color="purple.800">It's {player}'s Turn!</Text>
+                    <Text fontSize="4xl" fontWeight="800" color="purple.800">It's {currentPlayer}'s Turn!</Text>
                 </Box>
                 <Box d="flex" alignItems="baseline">
                     <Text fontWeight="800" fontSize="xl" color="orange.400" mx="2">{time}</Text>

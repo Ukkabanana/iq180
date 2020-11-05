@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Status from '../../components/Status'
 import Numbers from '../../components/Numbers'
 import { Box, Grid } from '@chakra-ui/core'
+import { SocketContext } from '../../components/Socket';
 
 
 
@@ -13,8 +14,10 @@ function Game(props) {
     console.log('now running')
   }
 
+  const { socket } = useContext(SocketContext)
+
   useEffect(() => {
-    props.socket.on("SET_CURRENT_STATE", (toState) => {
+    socket.on("SET_CURRENT_STATE", (toState) => {
       console.log(toState)
       switch (toState) {
         case "WAITING":
@@ -33,10 +36,10 @@ function Game(props) {
   return (
     <Grid className="container">
       <Box className="box">
-        <Status socket={props.socket} />
+        <Status />
       </Box>
       <Box d="flex" justifyContent="center" alignSelf="flex-top">
-        <Numbers socket={props.socket} />
+        <Numbers />
       </Box>
     </Grid>
   )

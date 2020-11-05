@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useHistory } from "react-router-dom";
 import {
     Text,
@@ -10,22 +10,25 @@ import {
     ThemeProvider,
     CSSReset,
 } from '@chakra-ui/core';
+import { SocketContext } from './Socket';
 
-function NameForm({ submit }) {// to handle add todo
+function NameForm() {// to handle add todo
     const [name, setName] = useState("");
     const history = useHistory();
+
+    const { socket } = useContext(SocketContext)
 
     const handleSubmit = e => {
         e.preventDefault();
         if (!name) return;
-        submit(name);
+        socket.emit("JOIN_ROOM", { name })
         setName("")
         history.push("/waiting")
     };
 
     const handleKeyDown = e => {
         if (e.key === 'Enter') {
-            submit(name);
+            socket.emit("JOIN_ROOM", { name })
             setName("")
             history.push("/waiting")
         }

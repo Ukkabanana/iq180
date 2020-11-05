@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from "react-router-dom";
 
 import {
@@ -9,19 +9,13 @@ import {
     CSSReset,
     Flex
 } from '@chakra-ui/core';
+import { SocketContext } from './Socket';
 
-function Numbers(props) {
-    const [numbers, setNumbers] = useState([]);
-    const [answer, setAnswer] = useState();
+function Numbers() {
 
-    useEffect(() => {
-        props.socket.on("SET_CURRENT_QUESTION", (question) => {
-            console.log(question)
-            setNumbers(question.numbers);
-            setAnswer(question.expectedAnswer);
-        })//wait for result of joining game from backend.
 
-    }, [])
+    const { numbers, answer } = useContext(SocketContext)
+
 
     return (
         <div>
