@@ -22,22 +22,19 @@ function RoundComp() {
     const [score, setScore] = useState("You win!");
     const [time, setTime] = useState("You win!");
     return (
-        <ThemeProvider>
-            <CSSReset />
-            <Box borderWidth="1px" rounded="lg" mx="24" my="32" boxShadow="sm">
-                <Grid className="container">
-                    <Box className="box">
-                        <h3> Round {round} </h3>
-                        <h2> {eachResult}</h2>
-                        <h2>Score : {score}</h2>
-                        <h2>Time used : {time}</h2>
-                        <Link to="/game">
-                            <Button bg="teal">Next round</Button>
-                        </Link>
-                    </Box>
-                </Grid>
-            </Box>
-        </ThemeProvider>
+        <Box borderWidth="1px" rounded="lg" mx="24" my="32" boxShadow="sm">
+            <Grid className="container">
+                <Box className="box">
+                    <h3> Round {round} </h3>
+                    <h2> {eachResult}</h2>
+                    <h2>Score : {score}</h2>
+                    <h2>Time used : {time}</h2>
+                    <Link to="/game">
+                        <Button bg="teal">Next round</Button>
+                    </Link>
+                </Box>
+            </Grid>
+        </Box>
     );
 }
 

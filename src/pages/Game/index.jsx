@@ -14,7 +14,7 @@ function Game(props) {
   }
 
   useEffect(() => {
-    props.socket.on("SET_STATE", (toState) => {
+    props.socket.on("SET_CURRENT_STATE", (toState) => {
       console.log(toState)
       switch (toState) {
         case "WAITING":
@@ -33,7 +33,7 @@ function Game(props) {
   return (
     <Grid className="container">
       <Box className="box">
-        <Status />
+        <Status socket={props.socket} />
       </Box>
       <Box d="flex" justifyContent="center" alignSelf="flex-top">
         <Numbers socket={props.socket} />
