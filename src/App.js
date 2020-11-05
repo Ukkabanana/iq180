@@ -52,14 +52,14 @@ function App() {
                     my="4"
                   // onClick={goToGame}
                   >
-                    Go to Game naja
+                    Go to Game
                   </Button>
                 </Link>
               </Box>
             </Grid>
           </Route>
           <Route path="/game">
-            <Game />
+            <Game socket={socket} />
           </Route>
           <Route path="/waiting">
             <Waiting joinRoomResult={joinRoomResult} socket={socket} />

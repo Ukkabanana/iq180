@@ -5,7 +5,7 @@ import { Box, Grid } from '@chakra-ui/core'
 
 
 
-function Game() {
+function Game(props) {
 
   const submit = (name) => {
     // handle socket submit
@@ -18,7 +18,7 @@ function Game() {
         <Status />
       </Box>
       <Box d="flex" justifyContent="center" alignSelf="flex-top">
-        <Numbers />
+        <Numbers socket={props.socket} />
       </Box>
     </Grid>
   )
