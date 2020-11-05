@@ -3,7 +3,7 @@ import io from 'socket.io-client'
 import { useHistory } from "react-router-dom";
 
 export const SocketContext = React.createContext({
-    player: "",
+    players: [],
     socket: null,
     time: 0,
     currentPlayer: "",
@@ -18,7 +18,7 @@ function Socket({ children }) {
 
     let history = useHistory();
 
-    const [name, setName] = useState([]);
+    const [players, setPlayers] = useState([]);
 
     const [time, setTime] = useState();
     const [currentPlayer, setCurrentPlayer] = useState("")
@@ -40,7 +40,7 @@ function Socket({ children }) {
         //From Showplayer.js
         socket.on("SET_PLAYERS", (players) => {
             console.log(players)
-            setName(players.map(p => p.name))
+            setPlayers(players.map(p => p.name))
             if (name.length >= 2) console.log("Players exceed 2!")
 
         })//wait for result of joining game from backend.
@@ -97,7 +97,7 @@ function Socket({ children }) {
     }, [])
     return (
         <div>
-            <SocketContext.Provider value={{ player: name, socket, time, currentPlayer, numbers, answer }}>
+            <SocketContext.Provider value={{ players, socket, time, currentPlayer, numbers, answer }}>
                 {children}
             </SocketContext.Provider>
         </div>
