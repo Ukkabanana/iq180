@@ -7,7 +7,7 @@ import { SocketContext } from '../../components/Socket';
 
 
 
-function Game(props) {
+function Game() {
 
   const submit = (name) => {
     // handle socket submit
