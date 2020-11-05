@@ -59,7 +59,7 @@ function App() {
             </Grid>
           </Route>
           <Route path="/game">
-            <Game />
+            <Game socket={socket} />
           </Route>
           <Route path="/waiting">
             <Waiting joinRoomResult={joinRoomResult} socket={socket} />
