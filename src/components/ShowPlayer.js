@@ -16,7 +16,7 @@ import {
 import { SocketContext } from '../components/Socket';
 
 function ShowPlayer() {// to handle add todo
-    const { player, socket } = useContext(SocketContext)
+    const { allPlayers, socket } = useContext(SocketContext)
     const handleSubmit = () => {
         socket.emit("START", null)
     }
@@ -28,8 +28,8 @@ function ShowPlayer() {// to handle add todo
                 {/* <NameForm submit={submit} /> */}
                 {/* <h1>{player1.name}</h1>
                 <h1>{player2.name}</h1> */}
-                <h1>{player[0]}</h1>
-                <h1>{player[1]}</h1>
+                <h1>{allPlayers[0]}</h1>
+                <h1>{allPlayers[1]}</h1>
                 <Button onClick={handleSubmit}>START</Button>
             </Box>
         </Grid>

@@ -6,6 +6,8 @@ export const SocketContext = React.createContext({
     allPlayers: [],
     socket: null,
     time: 0,
+    round: 0,
+    score: 0,
     currentPlayer: "",
     numbers: [],
     answer: 0
@@ -22,7 +24,8 @@ function Socket({ children }) {
 
     const [time, setTime] = useState();
     const [currentPlayer, setCurrentPlayer] = useState("")
-
+    const [round, setRound] = useState(0);
+    const [score, setScore] = useState(0);
     const [numbers, setNumbers] = useState([]);
     const [answer, setAnswer] = useState();
 
@@ -42,7 +45,6 @@ function Socket({ children }) {
             console.log(players)
             setAllPlayers(players.map(p => p.name))
             if (allPlayers.length >= 2) console.log("Players exceed 2!")
-
         })//wait for result of joining game from backend.
         socket.on("SET_CURRENT_STATE", (toState) => {
             console.log(toState)
@@ -97,7 +99,7 @@ function Socket({ children }) {
     }, [])
     return (
         <div>
-            <SocketContext.Provider value={{ allPlayers, socket, time, currentPlayer, numbers, answer }}>
+            <SocketContext.Provider value={{ allPlayers, socket, time, round, score, currentPlayer, numbers, answer }}>
                 {children}
             </SocketContext.Provider>
         </div>

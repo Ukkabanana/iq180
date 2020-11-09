@@ -7,18 +7,45 @@ import {
     Box,
     ThemeProvider,
     CSSReset,
-    Flex
+    Flex,
+    Grid,
+    Input
 } from '@chakra-ui/core';
 import { SocketContext } from './Socket';
 
 function Numbers() {
 
 
-    const { numbers, answer } = useContext(SocketContext)
+    const { numbers, answer, socket } = useContext(SocketContext)
+    const [isCurrent, setIsCurrent] = useState(true);
 
+    const checkAnswer = e => {
+        e.preventDefault();
+        socket.emit("", e)
+        socket.on("", (response) => {
+
+        })
+    }
+
+    useEffect(() => {
+        socket.on('connect', () => {
+            let myUID = socket.id;
+            if (myUID != currentPlayer) {
+                setIsCurrent(false)
+            } else {
+                setIsCurrent(true)
+            }
+        })
+    })
+
+
+
+    if (!isCurrent) {
+        return null;
+    }
 
     return (
-        <div>
+        <Grid>
             <Box d="flex" alignItems="center" justify="space-between">
                 {numbers.map((number, index) => (
                     <Box key={index} bg="gray.100" mx="2" p="4" >
@@ -26,10 +53,16 @@ function Numbers() {
                     </Box>
                 ))}
             </Box>
-            <Box d="flex" bg="teal">
+            <Box d="flex" bg="orange.400">
                 {answer}
             </Box>
-        </div>
+            <Input
+                placeholder="Your answer"
+                value={answer}
+                onKeyDown={handleKeyDown}
+                onChange={e => checkAnswer(e.target.value)}
+            />
+        </Grid>
     );
 }
 

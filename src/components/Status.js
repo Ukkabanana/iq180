@@ -13,11 +13,11 @@ import { SocketContext } from './Socket';
 
 function Status() {// to handle status box
     const [round, setRound] = useState("1");
-    const [score, setScore] = useState("0");
 
 
 
-    const { time, currentPlayer } = useContext(SocketContext)
+
+    const { time, currentPlayer, score } = useContext(SocketContext)
 
 
     return (
