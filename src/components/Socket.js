@@ -16,7 +16,7 @@ export const SocketContext = React.createContext({
 
 
 function Socket({ children }) {
-    const socket = useMemo(() => io("https://netcentric-iq180.herokuapp.com"), []);
+    const socket = useMemo(() => io("http://localhost:3000/"), []);
 
     let history = useHistory();
 
@@ -28,6 +28,7 @@ function Socket({ children }) {
     const [score, setScore] = useState(0);
     const [numbers, setNumbers] = useState([]);
     const [answer, setAnswer] = useState();
+    const [roomCode, setRoomCode] = useState("");
 
     // const [joinRoomResult, setJoinRoomResult] = useState({});
 
@@ -35,32 +36,35 @@ function Socket({ children }) {
 
 
     useEffect(() => {
-        socket.on("JOIN_ROOM_RESULT", (result) => {
+        socket.on("userConnected", (result) => {
             console.log(result)
             // setJoinRoomResult(result);
         })//wait for result of joining game from backend.
-
+        socket.on("#roomCode", (roomCode) => {
+            console.log(roomCode)
+            setRoomCode(roomCode)
+        })
         //From Showplayer.js
-        socket.on("SET_PLAYERS", (players) => {
+        socket.on("#userJoined", (players) => {
             console.log(players)
             setAllPlayers(players.map(p => p.name))
             if (allPlayers.length >= 2) console.log("Players exceed 2!")
         })//wait for result of joining game from backend.
-        socket.on("SET_CURRENT_STATE", (toState) => {
-            console.log(toState)
-            switch (toState) {
-                case "WAITING":
-                    break;
-                case "ONGOING":
-                    history.push("/game")
-                    break;
+        // socket.on("SET_CURRENT_STATE", (toState) => {
+        //     console.log(toState)
+        //     switch (toState) {
+        //         case "WAITING":
+        //             break;
+        //         case "ONGOING":
+        //             history.push("/game")
+        //             break;
 
-                case "FINISHED":
-                    history.push("/waiting")
-                    break;
-                // Game state changed to "FINISHED" -> Display Leaderboard
-            }
-        })
+        //         case "FINISHED":
+        //             history.push("/waiting")
+        //             break;
+        //         // Game state changed to "FINISHED" -> Display Leaderboard
+        //     }
+        // })
         console.log(socket);
         socket.on("START_RESULT", (result) => {
             console.log('On start result', result)
@@ -99,7 +103,7 @@ function Socket({ children }) {
     }, [])
     return (
         <div>
-            <SocketContext.Provider value={{ allPlayers, socket, time, round, score, currentPlayer, numbers, answer }}>
+            <SocketContext.Provider value={{ allPlayers, socket, time, round, score, currentPlayer, numbers, answer, roomCode }}>
                 {children}
             </SocketContext.Provider>
         </div>
