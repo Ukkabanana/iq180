@@ -12,7 +12,7 @@ import {
 } from '@chakra-ui/core';
 import { SocketContext } from './Socket';
 
-function NameForm() {// to handle add todo
+function NameForm(props) {// to handle add todo
     const [name, setName] = useState("");
     const history = useHistory();
 
@@ -39,13 +39,13 @@ function NameForm() {// to handle add todo
             <CSSReset />
             <Box borderWidth="1px" rounded="lg" mx="24" my="32" boxShadow="sm">
                 <Box>
-                    <Text fontSize="4xl" color='blue.500' textAlign="center" mx="8" p="6">
+                    <Text fontSize="4xl" color={props.colors['text_color']} textAlign="center" mx="8" p="6">
                         Welcome to IQ 180
                         </Text>
                 </Box>
                 <Box>
                     <FormControl p="16" mx="4" onSubmit={handleSubmit}>
-                        <FormLabel color='gray.600'>
+                        <FormLabel color={props.colors['label_color']}>
                             Please tell us your name
                             </FormLabel>
                         <Input
@@ -59,7 +59,7 @@ function NameForm() {// to handle add todo
                 <Box textAlign="center">
                     <Button
                         variant="solid"
-                        variantColor="orange"
+                        variantColor={props.colors['background']}
                         my="4"
                         onClick={handleSubmit}
                     >

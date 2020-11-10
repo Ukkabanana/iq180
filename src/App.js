@@ -21,45 +21,58 @@ import Socket from './components/Socket'
 
 
 function App() {
-
-  return (
-    <ThemeProvider>
-      <CSSReset />
-      <Router>
-        <Socket>
-          <Switch>
-            <Route exact path="/">
-              <Grid className="container">
-                <Box className="box">
-                  <NameForm />
-                  <Link to="/game">
-                    <Button
-                      my="4"
-                    // onClick={goToGame}
-                    >
-                      Go to Game
-                    </Button>
-                  </Link>
-                </Box>
-              </Grid>
-            </Route>
-            <Route path="/game">
-              <Game />
-            </Route>
-            <Route path="/waiting">
-              <Waiting />
-            </Route>
-            <Route path="/round">
-              <Round />
-            </Route>
-            <Route path="/result">
-              <Result />
-            </Route>
-          </Switch>
-        </Socket>
-      </Router>
-    </ThemeProvider>
-  )
+    const colors = {
+        buttons_color: 'orange.500',
+        buttons_textColor: 'blue',
+        text_color: 'blue.500',
+        label_color: '',
+        heading_color: '',
+        placeholder_color: '',
+        box_background: 'gray',
+    }
+    
+    const [colorState, setColorState] = useState(colors); 
+    console.log(colorState.button_color);
+    return (
+        <ThemeProvider>
+        <CSSReset />
+        <Router>
+            <Socket>
+            <Switch>
+                <Route exact path="/">
+                <Grid className="container">
+                    <Box className="box">
+                    <NameForm 
+                        colors = {colorState}
+                    />
+                    <Link to="/game">
+                        <Button
+                        my="4"
+                        // onClick={goToGame}
+                        >
+                        Go to Game
+                        </Button>
+                    </Link>
+                    </Box>
+                </Grid>
+                </Route>
+                <Route path="/game">
+                <Game colors = {colorState}/>
+                </Route>
+                <Route path="/waiting">
+                <Waiting colors={colorState}/>
+                </Route>
+                <Route path="/round">
+                <Round colors={colorState}/>
+                </Route>
+                <Route path="/result">
+                <Result colors={colorState}/>
+                </Route>
+            </Switch>
+            </Socket>
+        </Router>
+        </ThemeProvider>
+    )
 }
 
 export default App;

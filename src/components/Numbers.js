@@ -13,7 +13,7 @@ import {
 } from '@chakra-ui/core';
 import { SocketContext } from './Socket';
 
-function Numbers() {
+function Numbers(props) {
 
 
     const { numbers, answer, socket, currentPlayer, myUID } = useContext(SocketContext)
@@ -62,7 +62,7 @@ function Numbers() {
                     </Box>
                 ))}
             </Box>
-            <Box d="flex" bg="orange.400">
+            <Box d="flex" bg='orange'>
                 {answer}
             </Box>
             <Input
@@ -75,7 +75,7 @@ function Numbers() {
             <Box textAlign="center">
                 <Button
                     variant="solid"
-                    variantColor="orange"
+                    variantColor={props.colors['button_color']}
                     my="4"
                     onClick={checkAnswer}
                 >

@@ -7,7 +7,7 @@ import { SocketContext } from '../../components/Socket';
 
 
 
-function Game() {
+function Game(props) {
 
   const submit = (name) => {
     // handle socket submit
@@ -39,7 +39,7 @@ function Game() {
         <Status />
       </Box>
       <Box d="flex" justifyContent="center" alignSelf="flex-top">
-        <Numbers />
+        <Numbers colors={props.colors}/>
       </Box>
     </Grid>
   )
