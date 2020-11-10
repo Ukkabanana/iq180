@@ -16,19 +16,18 @@ export const SocketContext = React.createContext({
 
 
 function Socket({ children }) {
-    const socket = useMemo(() => io("http://localhost:3000/"), []);
+    const socket = useMemo(() => io("https://netcentric-iq180.herokuapp.com"), []);
 
     let history = useHistory();
 
     const [allPlayers, setAllPlayers] = useState([]);
-
+    const [myUID, setMyUID] = useState("")
     const [time, setTime] = useState();
     const [currentPlayer, setCurrentPlayer] = useState("")
     const [round, setRound] = useState(0);
-    const [score, setScore] = useState(0);
+    const [score, setScore] = useState([]);
     const [numbers, setNumbers] = useState([]);
     const [answer, setAnswer] = useState();
-    const [roomCode, setRoomCode] = useState("");
 
     // const [joinRoomResult, setJoinRoomResult] = useState({});
 
@@ -36,35 +35,37 @@ function Socket({ children }) {
 
 
     useEffect(() => {
-        socket.on("userConnected", (result) => {
-            console.log(result)
+        socket.on("JOIN_ROOM_RESULT", (result) => {
+            console.log("joinroomResult: ", result)
             // setJoinRoomResult(result);
         })//wait for result of joining game from backend.
-        socket.on("#roomCode", (roomCode) => {
-            console.log(roomCode)
-            setRoomCode(roomCode)
+
+        socket.on('connect', () => {
+            setMyUID(socket.id)
+            console.log("myUID: ", myUID)
         })
         //From Showplayer.js
-        socket.on("#userJoined", (players) => {
-            console.log(players)
-            setAllPlayers(players.map(p => p.name))
+        socket.on("SET_PLAYERS", (players) => {
+            console.log("player is: ", players)
+            // setAllPlayers(players.map(p => p.name))
+            setAllPlayers(players)
             if (allPlayers.length >= 2) console.log("Players exceed 2!")
         })//wait for result of joining game from backend.
-        // socket.on("SET_CURRENT_STATE", (toState) => {
-        //     console.log(toState)
-        //     switch (toState) {
-        //         case "WAITING":
-        //             break;
-        //         case "ONGOING":
-        //             history.push("/game")
-        //             break;
+        socket.on("SET_CURRENT_STATE", (toState) => {
+            console.log(toState)
+            switch (toState) {
+                case "WAITING":
+                    break;
+                case "ONGOING":
+                    history.push("/game")
+                    break;
 
-        //         case "FINISHED":
-        //             history.push("/waiting")
-        //             break;
-        //         // Game state changed to "FINISHED" -> Display Leaderboard
-        //     }
-        // })
+                case "FINISHED":
+                    history.push("/result")
+                    break;
+                // Game state changed to "FINISHED" -> Display Leaderboard
+            }
+        })
         console.log(socket);
         socket.on("START_RESULT", (result) => {
             console.log('On start result', result)
@@ -93,6 +94,12 @@ function Socket({ children }) {
             setAnswer(question.expectedAnswer);
         })//wait for result of joining game from backend.
 
+        socket.on("SUBMIT_RESULT", (response) => {
+            console.log(response)
+        })
+
+
+
 
         return () => {
             socket.off("SET_PLAYERS")
@@ -101,9 +108,10 @@ function Socket({ children }) {
         }
 
     }, [])
+    console.log(score, 'score??')
     return (
         <div>
-            <SocketContext.Provider value={{ allPlayers, socket, time, round, score, currentPlayer, numbers, answer, roomCode }}>
+            <SocketContext.Provider value={{ allPlayers, socket, time, round, score, currentPlayer, myUID, numbers, answer }}>
                 {children}
             </SocketContext.Provider>
         </div>

@@ -16,27 +16,36 @@ import { SocketContext } from './Socket';
 function Numbers() {
 
 
-    const { numbers, answer, socket } = useContext(SocketContext)
+    const { numbers, answer, socket, currentPlayer, myUID } = useContext(SocketContext)
     const [isCurrent, setIsCurrent] = useState(true);
+    const [userAnswer, setUserAnswer] = useState("");
 
     const checkAnswer = e => {
         e.preventDefault();
-        socket.emit("", e)
-        socket.on("", (response) => {
+        socket.emit("SUBMIT", userAnswer)
+        setUserAnswer("")
+    }
 
-        })
+    const handleKeyDown = e => {
+        if (e.key === 'Enter') {
+            socket.emit("SUBMIT", userAnswer)
+            setUserAnswer("")
+        }
+
     }
 
     useEffect(() => {
-        socket.on('connect', () => {
-            let myUID = socket.id;
-            if (myUID != currentPlayer) {
-                setIsCurrent(false)
-            } else {
-                setIsCurrent(true)
-            }
-        })
-    })
+        if (myUID !== currentPlayer) {
+            setIsCurrent(false)
+            console.log("Not your turn")
+        } else {
+            setIsCurrent(true)
+            console.log("It's your turn")
+        }
+    }, [myUID, currentPlayer])
+
+
+
 
 
 
@@ -58,10 +67,21 @@ function Numbers() {
             </Box>
             <Input
                 placeholder="Your answer"
-                value={answer}
+                value={userAnswer}
                 onKeyDown={handleKeyDown}
-                onChange={e => checkAnswer(e.target.value)}
+                onChange={e => setUserAnswer(e.target.value)}
+
             />
+            <Box textAlign="center">
+                <Button
+                    variant="solid"
+                    variantColor="orange"
+                    my="4"
+                    onClick={checkAnswer}
+                >
+                    Enter
+                        </Button>
+            </Box>
         </Grid>
     );
 }
