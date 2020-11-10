@@ -4,10 +4,11 @@ import { useHistory } from "react-router-dom";
 
 export const SocketContext = React.createContext({
     allPlayers: [],
+    roomCode: "",
     socket: null,
+    myUID: "",
     time: 0,
     round: 0,
-    score: 0,
     currentPlayer: "",
     numbers: [],
     answer: 0
@@ -21,11 +22,11 @@ function Socket({ children }) {
     let history = useHistory();
 
     const [allPlayers, setAllPlayers] = useState([]);
+    const [roomCode, setRoomCode] = useState("");
     const [myUID, setMyUID] = useState("")
     const [time, setTime] = useState();
     const [currentPlayer, setCurrentPlayer] = useState("")
     const [round, setRound] = useState(0);
-    const [score, setScore] = useState([]);
     const [numbers, setNumbers] = useState([]);
     const [answer, setAnswer] = useState();
 
@@ -37,6 +38,7 @@ function Socket({ children }) {
     useEffect(() => {
         socket.on("JOIN_ROOM_RESULT", (result) => {
             console.log("joinroomResult: ", result)
+            setRoomCode(result.code)
             // setJoinRoomResult(result);
         })//wait for result of joining game from backend.
 
@@ -51,6 +53,10 @@ function Socket({ children }) {
             setAllPlayers(players)
             if (allPlayers.length >= 2) console.log("Players exceed 2!")
         })//wait for result of joining game from backend.
+
+
+
+
         socket.on("SET_CURRENT_STATE", (toState) => {
             console.log(toState)
             switch (toState) {
@@ -80,19 +86,25 @@ function Socket({ children }) {
         //from Status.js
         socket.on("SET_REMAINING_TIME", (countdown) => {
             setTime(countdown)
-            console.log("time left", countdown)
+            // console.log("time left", countdown)
         })//wait for result of joining game from backend.
         socket.on("SET_CURRENT_PLAYER", (currentPlayer) => {
             setCurrentPlayer(currentPlayer)
-            console.log(currentPlayer)
+            // console.log(currentPlayer)
         })
+
+
 
         //from Numbers.js
         socket.on("SET_CURRENT_QUESTION", (question) => {
             console.log(question)
             setNumbers(question.numbers);
             setAnswer(question.expectedAnswer);
+            setRound(round => round + 1);
         })//wait for result of joining game from backend.
+
+
+
 
         socket.on("SUBMIT_RESULT", (response) => {
             console.log(response)
@@ -108,10 +120,9 @@ function Socket({ children }) {
         }
 
     }, [])
-    console.log(score, 'score??')
     return (
         <div>
-            <SocketContext.Provider value={{ allPlayers, socket, time, round, score, currentPlayer, myUID, numbers, answer }}>
+            <SocketContext.Provider value={{ allPlayers, roomCode, socket, time, round, currentPlayer, myUID, numbers, answer }}>
                 {children}
             </SocketContext.Provider>
         </div>
