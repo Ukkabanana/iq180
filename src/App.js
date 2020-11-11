@@ -15,15 +15,11 @@ import Game from './pages/Game/index'
 import Round from './pages/Round/index'
 import Result from './pages/Result/index'
 
- 
-
 import Socket from './components/Socket'
+import PlayMusic from './components/PlayMusic';
 
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
-
-
-
 
 function App() {
     let lang = "th";
@@ -35,6 +31,9 @@ function App() {
     return (
         <ThemeProvider>
         <CSSReset />
+        <Box className="box">
+        <PlayMusic />
+        </Box>
         <Router>
             <Socket>
             <Switch>
@@ -72,6 +71,6 @@ function App() {
         </Router>
         </ThemeProvider>
     )
-    }
+ }
 
 export default App;
