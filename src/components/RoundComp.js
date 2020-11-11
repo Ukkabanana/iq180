@@ -15,8 +15,10 @@ import {
     CSSReset
 } from '@chakra-ui/core';
 import { ThemeProvider } from 'emotion-theming';
+import { useTranslation } from "react-i18next";
 
 function RoundComp() {
+    const { t } = useTranslation();
     const [round, setRound] = useState(1);
     const [eachResult, setEachResult] = useState("You win!");
     const [score, setScore] = useState("You win!");
@@ -30,7 +32,7 @@ function RoundComp() {
                     <h2>Score : {score}</h2>
                     <h2>Time used : {time}</h2>
                     <Link to="/game">
-                        <Button bg="teal">Next round</Button>
+                        <Button bg="teal">{t("Next round")}</Button>
                     </Link>
                 </Box>
             </Grid>

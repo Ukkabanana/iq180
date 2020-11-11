@@ -11,7 +11,9 @@ const resources = {
             "Change Language": "Change Language",
             "Join game": "Join game",
             "Create game": "Create game",
-            "Room code": "Room code",    
+            "Room code": "Room code",
+            "There's": "",
+            "Seconds left!": "Seconds left!",    
         },
     },
     th: {
@@ -22,6 +24,8 @@ const resources = {
             "Join game": "เข้าร่วมห้อง",
             "Create game": "สร้างห้อง",
             "Room code": "รหัสห้อง",
+            "There's": "เหลือเวลาอีก ",
+            "Seconds left!": "วินาที!"
         },
     },
 };
@@ -29,7 +33,7 @@ const resources = {
 i18n.use(initReactI18next) // passes i18n down to react-i18next
     .init({
         resources,
-        lng: "th",
+        lng: "en",
 
         keySeparator: false, // we do not use keys in form messages.welcome
 

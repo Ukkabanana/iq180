@@ -20,7 +20,7 @@ import {
 } from '@chakra-ui/core';
 import { SocketContext } from './Socket';
 import i18n from "i18next";
-import { useTranslation, initReactI18next } from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 function NameForm() {// to handle add todo
     const [name, setName] = useState("");
@@ -126,7 +126,7 @@ function NameForm() {// to handle add todo
                                     </FormControl>
                                     <ButtonGroup d="flex" justifyContent="flex-end">
                                         <Button variantColor="orange" onClick={handleSubmit} m="4">
-                                            Join
+                                            {t('Join')}
                                         </Button>
                                     </ButtonGroup>
                                 </Stack>

@@ -15,8 +15,10 @@ import {
     Text
 } from '@chakra-ui/core';
 import { SocketContext } from '../components/Socket';
+import { useTranslation } from "react-i18next";
 
 function ShowPlayer() {// to handle add todo
+    const { t } = useTranslation();
     const { allPlayers, socket } = useContext(SocketContext)
     const handleSubmit = () => {
         socket.emit("START", null)
@@ -31,7 +33,7 @@ function ShowPlayer() {// to handle add todo
                 <h1>{player2.name}</h1> */}
                 <h1>{allPlayers[0]?.name}</h1>
                 <h1>{allPlayers[1]?.name}</h1>
-                <Button onClick={handleSubmit}>START</Button>
+                <Button onClick={handleSubmit}>{t('START')}</Button>
             </Box>
         </Grid>
     );
