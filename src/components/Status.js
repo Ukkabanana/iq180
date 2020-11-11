@@ -27,7 +27,7 @@ function Status() {// to handle status box
             setDisplayName(allPlayers[1]?.name)
             console.log(displayName)
         }
-    }, [currentPlayer, allPlayers, displayName])
+    }, [currentPlayer, allPlayers])
 
 
 
@@ -44,7 +44,7 @@ function Status() {// to handle status box
                     </Box>
                     <Box bg="purple.800" p="4" textAlign="center" color="white">
                         <Text>
-                            Scoreboard
+                            {t('Scoreboard')}
                         </Text>
                         <Text>
                             {allPlayers[0].name} : {allPlayers[0].currentScore}

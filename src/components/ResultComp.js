@@ -43,7 +43,7 @@ function ResultComp() {
                 setResult("Draw")
             }
         }
-    }, [allPlayers, myUID])
+    }, [])
     return (
         <Box borderWidth="1px" rounded="lg" mx="24" my="32" boxShadow="sm">
             <Grid className="container">
