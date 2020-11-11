@@ -14,8 +14,11 @@ const resources = {
             "Room code": "Room code",
             "Player name": "Player name",
             "Please enter room code": "Player name",
-            "Join": "Join",    
-            "There's": "",
+            "Join": "Join",
+            "Round": "Round",
+            "Scoreboard": "Scoreboard",
+            "It's": "It's",
+            "'s Turn!": "'s Turn!",    
             "Seconds left!": "Seconds left!",    
         },
     },
@@ -30,8 +33,11 @@ const resources = {
             "Player name": "ชื่อผู้เล่น",
             "Please enter room code": "โปรดใส่รหัสห้อง",
             "Join": "เข้าห้อง",
-            "There's": "เหลือเวลาอีก ",
-            "Seconds left!": "วินาที!"
+            "Round": "รอบที่",
+            "Scoreboard": "ตารางคะแนน",
+            "It's": "ตอนนี้ตาของ",
+            "'s Turn!": "",
+            "Seconds left!": "วินาทีจะหมดเวลา"
         },
     },
 };
