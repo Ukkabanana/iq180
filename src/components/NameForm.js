@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import FocusLock from "react-focus-lock"
 import { useHistory } from "react-router-dom";
 import {
     Text,
@@ -9,14 +10,44 @@ import {
     FormLabel,
     ThemeProvider,
     CSSReset,
+    Popover,
+    ButtonGroup,
+    PopoverTrigger,
+    PopoverContent,
+    PopoverArrow,
+    PopoverCloseButton,
+    Stack
 } from '@chakra-ui/core';
 import { SocketContext } from './Socket';
 
 function NameForm() {// to handle add todo
     const [name, setName] = useState("");
     const history = useHistory();
+    const firstFieldRef = React.useRef(null);
 
     const { socket } = useContext(SocketContext)
+
+
+    // const roomCodeForm = () => {
+    //     return (
+    //         <Stack spacing={4}>
+    //             <FormControl p="16" mx="4" onSubmit={handleSubmit}>
+    //                 <FormLabel color='gray.600'>
+    //                     Room code
+    //                 </FormLabel>
+    //                 <Input
+    //                     placeholder="Please enter room code"
+    //                     onKeyDown={handleKeyDown}
+    //                 />
+    //             </FormControl>
+    //             <ButtonGroup d="flex" justifyContent="flex-end">
+    //                 <Button variantColor="orange" onClick={handleSubmit}>
+    //                     Join
+    //           </Button>
+    //             </ButtonGroup>
+    //         </Stack>
+    //     );
+    // };
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -25,6 +56,8 @@ function NameForm() {// to handle add todo
         setName("")
         history.push("/waiting")
     };
+
+
 
     const handleKeyDown = e => {
         if (e.key === 'Enter') {
@@ -56,16 +89,50 @@ function NameForm() {// to handle add todo
                         />
                     </FormControl>
                 </Box>
-                <Box textAlign="center">
+                <ButtonGroup textAlign="center">
                     <Button
                         variant="solid"
                         variantColor="orange"
                         my="4"
                         onClick={handleSubmit}
                     >
-                        Enter
-                        </Button>
-                </Box>
+                        Create game
+                    </Button>
+                    <Popover>
+                        <PopoverTrigger>
+                            <Button
+                                variant="solid"
+                                variantColor="orange"
+                                my="4"
+                            >
+                                Join game
+                            </Button>
+                        </PopoverTrigger>
+                        <PopoverContent>
+                            <FocusLock returnFocus persistentFocus={false}>
+                                <PopoverArrow bg="white" />
+                                <PopoverCloseButton />
+                                <Stack spacing={4}>
+                                    <FormControl p="8" onSubmit={handleSubmit}>
+                                        <FormLabel color='gray.600'>
+                                            Room code
+                                        </FormLabel>
+                                        <Input
+                                            placeholder="Please enter room code"
+                                            onKeyDown={handleKeyDown}
+                                        />
+                                    </FormControl>
+                                    <ButtonGroup d="flex" justifyContent="flex-end">
+                                        <Button variantColor="orange" onClick={handleSubmit} m="4">
+                                            Join
+                                        </Button>
+                                    </ButtonGroup>
+                                </Stack>
+                            </FocusLock>
+                        </PopoverContent>
+                    </Popover>
+
+                </ButtonGroup>
             </Box>
         </ThemeProvider>
     );

@@ -32,14 +32,14 @@ function App() {
               <Grid className="container">
                 <Box className="box">
                   <NameForm />
-                  <Link to="/game">
+                  {/* <Link to="/game">
                     <Button
                       my="4"
                     // onClick={goToGame}
                     >
                       Go to Game
                     </Button>
-                  </Link>
+                  </Link> */}
                 </Box>
               </Grid>
             </Route>
