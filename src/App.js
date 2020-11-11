@@ -15,51 +15,61 @@ import Game from './pages/Game/index'
 import Round from './pages/Round/index'
 import Result from './pages/Result/index'
 
+ 
+
 import Socket from './components/Socket'
+import i18n from './i18n';
+import { useTranslation } from 'react-i18next';
 
 
 
 
 function App() {
-
-  return (
-    <ThemeProvider>
-      <CSSReset />
-      <Router>
-        <Socket>
-          <Switch>
-            <Route exact path="/">
-              <Grid className="container">
-                <Box className="box">
-                  <NameForm />
-                  {/* <Link to="/game">
-                    <Button
-                      my="4"
-                    // onClick={goToGame}
-                    >
-                      Go to Game
-                    </Button>
-                  </Link> */}
-                </Box>
-              </Grid>
-            </Route>
-            <Route path="/game">
-              <Game />
-            </Route>
-            <Route path="/waiting">
-              <Waiting />
-            </Route>
-            <Route path="/round">
-              <Round />
-            </Route>
-            <Route path="/result">
-              <Result />
-            </Route>
-          </Switch>
-        </Socket>
-      </Router>
-    </ThemeProvider>
-  )
-}
+    // var lang = "en";
+    const { t, i18n } = useTranslation();
+    const changeLanguage = (lng) =>{
+        i18n.changeLanguage(lng)
+    }
+    return (
+        <ThemeProvider>
+        <CSSReset />
+        <Router>
+            <Socket>
+            <Switch>
+                <Route exact path="/">
+                <Grid className="container">
+                    <Box className="box">
+                    <NameForm />
+                    {/* <Link to="/game">
+                        <Button
+                        my="4"
+                        // onClick={goToGame}
+                        >
+                        Go to Game
+                        </Button>
+                    </Link> */}
+                    <Button onClick={() => changeLanguage("th")}>Change Language</Button>
+                    </Box>
+                </Grid>
+                
+                </Route>
+                <Route path="/game">
+                <Game />
+                </Route>
+                <Route path="/waiting">
+                <Waiting />
+                </Route>
+                <Route path="/round">
+                <Round />
+                </Route>
+                <Route path="/result">
+                <Result />
+                </Route>
+            </Switch>
+            </Socket>
+        </Router>
+        </ThemeProvider>
+    )
+    }
 
 export default App;

@@ -19,12 +19,14 @@ import {
     Stack
 } from '@chakra-ui/core';
 import { SocketContext } from './Socket';
+import i18n from "i18next";
+import { useTranslation, initReactI18next } from "react-i18next";
 
 function NameForm() {// to handle add todo
     const [name, setName] = useState("");
     const history = useHistory();
     const firstFieldRef = React.useRef(null);
-
+    const { t } = useTranslation();
     const { socket } = useContext(SocketContext)
 
 
@@ -73,13 +75,13 @@ function NameForm() {// to handle add todo
             <Box borderWidth="1px" rounded="lg" mx="24" my="32" boxShadow="sm">
                 <Box>
                     <Text fontSize="4xl" color='blue.500' textAlign="center" mx="8" p="6">
-                        Welcome to IQ 180
+                        {t('Welcome to IQ 180')}
                         </Text>
                 </Box>
                 <Box>
                     <FormControl p="16" mx="4" onSubmit={handleSubmit}>
                         <FormLabel color='gray.600'>
-                            Please tell us your name
+                            {t('Please tell us your name')}
                             </FormLabel>
                         <Input
                             placeholder="Player name"
