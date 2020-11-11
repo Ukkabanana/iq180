@@ -12,6 +12,7 @@ import {
     Button,
     Grid,
     Box,
+    Text
 } from '@chakra-ui/core';
 import { SocketContext } from '../components/Socket';
 
