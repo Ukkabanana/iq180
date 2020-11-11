@@ -14,50 +14,46 @@ import Waiting from './pages/Waiting/index'
 import Game from './pages/Game/index'
 import Round from './pages/Round/index'
 import Result from './pages/Result/index'
+import Themes from './pages/Themes/index'
 
 import Socket from './components/Socket'
-
-
-
 
 function App() {
 
   return (
     <ThemeProvider>
-      <CSSReset />
-      <Router>
-        <Socket>
-          <Switch>
-            <Route exact path="/">
-              <Grid className="container">
-                <Box className="box">
+        <CSSReset />
+        <Router>
+          <Socket>
+            <Switch>
+              <Route exact path="/">
+                <Grid className="container">
+                  <Box className="box">
                   <NameForm />
-                  <Link to="/game">
-                    <Button
-                      my="4"
-                    // onClick={goToGame}
-                    >
-                      Go to Game
-                    </Button>
-                  </Link>
-                </Box>
-              </Grid>
-            </Route>
-            <Route path="/game">
-              <Game />
-            </Route>
-            <Route path="/waiting">
-              <Waiting />
-            </Route>
-            <Route path="/round">
-              <Round />
-            </Route>
-            <Route path="/result">
-              <Result />
-            </Route>
-          </Switch>
-        </Socket>
-      </Router>
+                      <Button>
+                        <Themes />
+                      </Button>
+                  </Box>
+                </Grid>
+              </Route>
+              <Route path="/Themes">
+                <Themes />
+              </Route>
+              <Route path="/game">
+                <Game />
+              </Route>
+              <Route path="/waiting">
+                <Waiting />
+              </Route>
+              <Route path="/round">
+                <Round />
+              </Route>
+              <Route path="/result">
+                <Result />
+              </Route>
+            </Switch>
+          </Socket>
+        </Router>
     </ThemeProvider>
   )
 }
