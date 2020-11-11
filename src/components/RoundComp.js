@@ -14,7 +14,6 @@ import {
     Box,
     CSSReset
 } from '@chakra-ui/core';
-import { ThemeProvider } from 'emotion-theming';
 
 function RoundComp() {
     const [round, setRound] = useState(1);

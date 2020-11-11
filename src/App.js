@@ -1,14 +1,12 @@
 import './App.css';
-import React, { useEffect, useState, useMemo } from 'react';
+import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
-  useHistory,
 } from "react-router-dom";
 
-import { Box, Grid, Button, ThemeProvider, CSSReset } from '@chakra-ui/core'
+import { Box, Grid, ThemeProvider, CSSReset, theme } from '@chakra-ui/core'
 import NameForm from './components/NameForm'
 import Waiting from './pages/Waiting/index'
 import Game from './pages/Game/index'
@@ -17,13 +15,30 @@ import Result from './pages/Result/index'
 
 import Socket from './components/Socket'
 
+// 2. Extend the theme to include custom colors, fonts, etc.
+const customTheme = {
+    ...theme,
+    fonts: {
+        heading: '"Avenir Next", sans-serif',
+        body: "system-ui, sans-serif",
+        mono: "Menlo, monospace",
+    },
+    colors: {
+        ...theme.colors,
+        brand: {
+            900: "#1a365d",
+            800: "#153e75",
+            700: "#2a69ac",
+        },
+    },
+};
 
 
 
 function App() {
 
   return (
-    <ThemeProvider>
+    <ThemeProvider theme={customTheme}>
       <CSSReset />
       <Router>
         <Socket>

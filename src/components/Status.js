@@ -1,6 +1,5 @@
 
 import React, { useState, useEffect, useContext } from 'react';
-import { useHistory } from "react-router-dom";
 import {
     Text,
     Box,
@@ -26,7 +25,7 @@ function Status() {// to handle status box
             setDisplayName(allPlayers[1]?.name)
             console.log(displayName)
         }
-    }, [currentPlayer, allPlayers])
+    }, [currentPlayer, allPlayers, displayName])
 
 
 
