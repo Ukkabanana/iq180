@@ -14,7 +14,7 @@ import Waiting from './pages/Waiting/index'
 import Game from './pages/Game/index'
 import Round from './pages/Round/index'
 import Result from './pages/Result/index'
-
+import DrawerMenu from './components/DrawerMenu'
 import Socket from './components/Socket'
 
 
@@ -29,17 +29,10 @@ function App() {
         <Socket>
           <Switch>
             <Route exact path="/">
+              <DrawerMenu />
               <Grid className="container">
                 <Box className="box">
                   <NameForm />
-                  {/* <Link to="/game">
-                    <Button
-                      my="4"
-                    // onClick={goToGame}
-                    >
-                      Go to Game
-                    </Button>
-                  </Link> */}
                 </Box>
               </Grid>
             </Route>
