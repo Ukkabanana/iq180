@@ -1,16 +1,10 @@
 import React, { useContext, useState } from 'react';
-import { Box, Grid, Button } from '@chakra-ui/core'
+import { Box, Grid, Text } from '@chakra-ui/core'
 import ShowPlayer from '../../components/ShowPlayer'
-import {
-    BrowserRouter as Router,
-    Link,
-    useHistory,
-    Route
-} from "react-router-dom";
 import { SocketContext } from '../../components/Socket';
 
 function Waiting() {
-
+    const { roomCode } = useContext(SocketContext)
     const submit = (name) => {
         // handle socket submit
         console.log(`submit ${name}`)
@@ -25,8 +19,9 @@ function Waiting() {
     return (
         <Grid className="container">
             <Box className="box">
-                <h1> HELLO Waiting </h1>
-                <h1>Players</h1>
+                <Text> Hello Players </Text>
+                <Text>Room code: {roomCode}</Text>
+                <Text>Players in the room</Text>
                 <ShowPlayer player1={player1} player2={player2} />
             </Box>
         </Grid>

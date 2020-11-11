@@ -30,30 +30,32 @@ function App() {
                 <Grid className="container">
                   <Box className="box">
                   <NameForm />
-                      <Button>
-                        <Themes />
-                      </Button>
-                  </Box>
-                </Grid>
-              </Route>
-              <Route path="/Themes">
-                <Themes />
-              </Route>
-              <Route path="/game">
-                <Game />
-              </Route>
-              <Route path="/waiting">
-                <Waiting />
-              </Route>
-              <Route path="/round">
-                <Round />
-              </Route>
-              <Route path="/result">
-                <Result />
-              </Route>
-            </Switch>
-          </Socket>
-        </Router>
+                  {/* <Link to="/game">
+                    <Button
+                      my="4"
+                    // onClick={goToGame}
+                    >
+                      Go to Game
+                    </Button>
+                  </Link> */}
+                </Box>
+              </Grid>
+            </Route>
+            <Route path="/game">
+              <Game />
+            </Route>
+            <Route path="/waiting">
+              <Waiting />
+            </Route>
+            <Route path="/round">
+              <Round />
+            </Route>
+            <Route path="/result">
+              <Result />
+            </Route>
+          </Switch>
+        </Socket>
+      </Router>
     </ThemeProvider>
   )
 }

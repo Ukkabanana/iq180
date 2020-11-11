@@ -9,7 +9,8 @@ import {
     CSSReset,
     Flex,
     Grid,
-    Input
+    Input,
+    Stack
 } from '@chakra-ui/core';
 import { SocketContext } from './Socket';
 
@@ -19,19 +20,82 @@ function Numbers() {
     const { numbers, answer, socket, currentPlayer, myUID } = useContext(SocketContext)
     const [isCurrent, setIsCurrent] = useState(true);
     const [userAnswer, setUserAnswer] = useState("");
+    const [checker, setChecker] = useState([]);
 
     const checkAnswer = e => {
         e.preventDefault();
+        setChecker(userAnswer.split('').filter(i => !Number.isNaN(Number(i))).map(Number))
         socket.emit("SUBMIT", userAnswer)
         setUserAnswer("")
     }
 
+    const [notUsed, setNotUsed] = useState(numbers);
+
+    useEffect(() => {
+        const inputNumber = userAnswer.split('').filter(i => !Number.isNaN(Number(i))).map(Number)
+        // console.log("checker is: ", inputNumber)
+        const clonedInput = [...inputNumber]
+        const localNotUsed = []
+        for (const i of numbers) {
+            const index = clonedInput.indexOf(i)
+            if (index === -1) {
+                localNotUsed.push(i)
+            } else {
+                clonedInput[index] = null
+            }
+        }
+        setNotUsed(localNotUsed)
+    }, [userAnswer])
+
+
     const handleKeyDown = e => {
+        // console.log('keydown', e.key)
+        // console.log('value ', e.target.value)
         if (e.key === 'Enter') {
             socket.emit("SUBMIT", userAnswer)
             setUserAnswer("")
+            return;
+        }
+        if (e.key === 'Backspace') {
+            const input = e.target.value
+            // const string = input.substring(0, input.length - 1)
+            // console.log(string.substring(0, string.length - 1))
+            setUserAnswer(input)
+            // const inputNumber = input.split('').filter(i => !Number.isNaN(Number(i))).map(Number)
+            // console.log("checker is: ", inputNumber)
+            // const clonedInput = [...inputNumber]
+            // const localNotUsed = []
+            // for (const i of numbers) {
+            //     const index = clonedInput.indexOf(i)
+            //     if (index === -1) {
+            //         localNotUsed.push(i)
+            //     } else {
+            //         clonedInput[index] = null
+            //     }
+            // }
+            // setNotUsed(localNotUsed)
         }
 
+
+    }
+
+    const handleChange = e => {
+        console.log('value ', e.target.value)
+        const input = e.target.value
+        setUserAnswer(input)
+        // const inputNumber = input.split('').filter(i => !Number.isNaN(Number(i))).map(Number)
+        // console.log("checker is: ", inputNumber)
+        // const clonedInput = [...inputNumber]
+        // const localNotUsed = []
+        // for (const i of numbers) {
+        //     const index = clonedInput.indexOf(i)
+        //     if (index === -1) {
+        //         localNotUsed.push(i)
+        //     } else {
+        //         clonedInput[index] = null
+        //     }
+        // }
+        // setNotUsed(localNotUsed)
     }
 
     useEffect(() => {
@@ -54,35 +118,33 @@ function Numbers() {
     }
 
     return (
-        <Grid>
+        <Stack spacing={4}>
             <Box d="flex" alignItems="center" justify="space-between">
-                {numbers.map((number, index) => (
+                {notUsed.map((number, index) => (
                     <Box key={index} bg="gray.100" mx="2" p="4" >
                         {number}
                     </Box>
                 ))}
             </Box>
-            <Box d="flex" bg="orange.400">
+            <Box bg="orange.400" alingnItems="center" justify="space-between">
                 {answer}
             </Box>
             <Input
                 placeholder="Your answer"
                 value={userAnswer}
                 onKeyDown={handleKeyDown}
-                onChange={e => setUserAnswer(e.target.value)}
+                onChange={handleChange}
 
             />
-            <Box textAlign="center">
-                <Button
-                    variant="solid"
-                    variantColor="orange"
-                    my="4"
-                    onClick={checkAnswer}
-                >
-                    Enter
-                        </Button>
-            </Box>
-        </Grid>
+            <Button
+                variant="solid"
+                variantColor="orange"
+                my="4"
+                onClick={checkAnswer}
+            >
+                Enter
+            </Button>
+        </Stack>
     );
 }
 
