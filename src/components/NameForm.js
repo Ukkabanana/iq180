@@ -19,7 +19,9 @@ import {
     Stack
 } from '@chakra-ui/core';
 import { SocketContext } from './Socket';
-import customTheme from '../themes';
+import customTheme from './themes';
+import colorMode from './ThemeToggler';
+
 function NameForm() {// to handle add todo
     const [name, setName] = useState("");
     const history = useHistory();
@@ -67,6 +69,7 @@ function NameForm() {// to handle add todo
         }
     }
 
+    
     return (
         <ThemeProvider theme={customTheme}>
             <CSSReset />

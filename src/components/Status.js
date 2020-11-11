@@ -9,7 +9,7 @@ import {
     Flex
 } from '@chakra-ui/core';
 import { SocketContext } from './Socket';
-import customTheme from '../themes'
+import customTheme from './themes'
 
 function Status() {// to handle status box
     const [displayName, setDisplayName] = useState("");
