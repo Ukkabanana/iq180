@@ -84,7 +84,7 @@ function NameForm() {// to handle add todo
                             {t('Please tell us your name')}
                             </FormLabel>
                         <Input
-                            placeholder="Player name"
+                            placeholder={t("Player name")}
                             value={name}
                             onKeyDown={handleKeyDown}
                             onChange={e => setName(e.target.value)}
@@ -120,7 +120,7 @@ function NameForm() {// to handle add todo
                                             {t('Room code')}
                                         </FormLabel>
                                         <Input
-                                            placeholder="Please enter room code"
+                                            placeholder={t("Please enter room code")}
                                             onKeyDown={handleKeyDown}
                                         />
                                     </FormControl>
