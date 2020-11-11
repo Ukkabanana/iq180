@@ -6,14 +6,22 @@ import { initReactI18next } from "react-i18next";
 const resources = {
     en: {
         translation: {
-            "Welcome to IQ180": "Welcome to React and react-i18next",
+            "Welcome to IQ180": "Welcome to IQ 180",
             "Please tell us your name": "Please tell us your name",
+            "Change Language": "Change Language",
+            "Join game": "Join game",
+            "Create game": "Create game",
+            "Room code": "Room code",    
         },
     },
     th: {
         translation: {
-            "Welcome to IQ180": "ยินดีต้อนรับสู่เกม IQ180",
+            "Welcome to IQ180": "ยินดีต้อนรับสู่เกม IQ 180",
             "Please tell us your name": "โปรดใส่ชื่อของคุณ",
+            "Change Language": "เปลี่ยนภาษา",
+            "Join game": "เข้าร่วมห้อง",
+            "Create game": "สร้างห้อง",
+            "Room code": "รหัสห้อง",
         },
     },
 };

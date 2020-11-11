@@ -75,7 +75,7 @@ function NameForm() {// to handle add todo
             <Box borderWidth="1px" rounded="lg" mx="24" my="32" boxShadow="sm">
                 <Box>
                     <Text fontSize="4xl" color='blue.500' textAlign="center" mx="8" p="6">
-                        {t('Welcome to IQ 180')}
+                        {t('Welcome to IQ180')}
                         </Text>
                 </Box>
                 <Box>
@@ -98,7 +98,7 @@ function NameForm() {// to handle add todo
                         my="4"
                         onClick={handleSubmit}
                     >
-                        Create game
+                        {t('Create game')}
                     </Button>
                     <Popover>
                         <PopoverTrigger>
@@ -107,7 +107,7 @@ function NameForm() {// to handle add todo
                                 variantColor="orange"
                                 my="4"
                             >
-                                Join game
+                                {t('Join game')}
                             </Button>
                         </PopoverTrigger>
                         <PopoverContent>
@@ -117,7 +117,7 @@ function NameForm() {// to handle add todo
                                 <Stack spacing={4}>
                                     <FormControl p="8" onSubmit={handleSubmit}>
                                         <FormLabel color='gray.600'>
-                                            Room code
+                                            {t('Room code')}
                                         </FormLabel>
                                         <Input
                                             placeholder="Please enter room code"

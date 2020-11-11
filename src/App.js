@@ -18,7 +18,7 @@ import Result from './pages/Result/index'
  
 
 import Socket from './components/Socket'
-import i18n from './i18n';
+
 import { useTranslation } from 'react-i18next';
 
 
@@ -48,7 +48,7 @@ function App() {
                         Go to Game
                         </Button>
                     </Link> */}
-                    <Button onClick={() => changeLanguage("th")}>Change Language</Button>
+                    <Button onClick={() => changeLanguage("th")}>{t('Change Language')}</Button>
                     </Box>
                 </Grid>
                 
