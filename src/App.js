@@ -20,15 +20,17 @@ import Result from './pages/Result/index'
 import Socket from './components/Socket'
 
 import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 
 
 
 
 function App() {
-    // var lang = "en";
+    let lang = "th";
     const { t, i18n } = useTranslation();
-    const changeLanguage = (lng) =>{
-        i18n.changeLanguage(lng)
+    const changeLanguage = () =>{
+        lang = i18next.language === "en" ? "th" : "en";
+        i18n.changeLanguage(lang)
     }
     return (
         <ThemeProvider>
@@ -48,7 +50,7 @@ function App() {
                         Go to Game
                         </Button>
                     </Link> */}
-                    <Button onClick={() => changeLanguage("th")}>{t('Change Language')}</Button>
+                    <Button onClick={() => changeLanguage()}>{t('Change Language')}</Button>
                     </Box>
                 </Grid>
                 
