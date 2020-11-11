@@ -10,9 +10,10 @@ import {
     Flex
 } from '@chakra-ui/core';
 import { SocketContext } from './Socket';
-
+import { useTranslation } from "react-i18next";
 
 function Status() {// to handle status box
+    const { t } = useTranslation();
     const [displayName, setDisplayName] = useState("");
     const [displayScore, setDisplayScore] = useState(0);
 
@@ -38,12 +39,12 @@ function Status() {// to handle status box
                 <Grid gap={2}>
                     <Box bg="purple.800" p="4" textAlign="center" color="white" >
                         <Text>
-                            Round: {round}
+                            {t('Round')}: {round}
                         </Text>
                     </Box>
                     <Box bg="purple.800" p="4" textAlign="center" color="white">
                         <Text>
-                            Scoreboard
+                            {t('Scoreboard')}
                         </Text>
                         <Text>
                             {allPlayers[0].name} : {allPlayers[0].currentScore}
@@ -54,11 +55,11 @@ function Status() {// to handle status box
                     </Box>
                 </Grid>
                 <Box textAlign="center">
-                    <Text fontSize="4xl" fontWeight="800" color="purple.800">It's {displayName}'s Turn!</Text>
+                    <Text fontSize="4xl" fontWeight="800" color="purple.800">{t("It's")} {displayName}{t("'s Turn!")}</Text>
                 </Box>
                 <Box d="flex" alignItems="baseline">
                     <Text fontWeight="800" fontSize="xl" color="orange.400" mx="2">{time}</Text>
-                    <Text fontWeight="400" color="purple.800" mr="8">Seconds left!</Text>
+                    <Text fontWeight="400" color="purple.800" mr="8">{t('Seconds left!')}</Text>
                 </Box>
             </Flex>
         </ThemeProvider>
