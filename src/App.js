@@ -14,21 +14,23 @@ import Waiting from './pages/Waiting/index'
 import Game from './pages/Game/index'
 import Round from './pages/Round/index'
 import Result from './pages/Result/index'
-
 import Socket from './components/Socket'
-
-
-
+import PlayMusic from './components/PlayMusic';
 
 function App() {
 
   return (
     <ThemeProvider>
+      <Box className="box">
+        <PlayMusic />
+      </Box>
       <CSSReset />
       <Router>
         <Socket>
+
           <Switch>
             <Route exact path="/">
+
               <Grid className="container">
                 <Box className="box">
                   <NameForm />
@@ -58,7 +60,7 @@ function App() {
           </Switch>
         </Socket>
       </Router>
-    </ThemeProvider>
+    </ThemeProvider >
   )
 }
 
