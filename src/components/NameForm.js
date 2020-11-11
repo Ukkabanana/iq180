@@ -19,7 +19,7 @@ import {
     Stack
 } from '@chakra-ui/core';
 import { SocketContext } from './Socket';
-
+import customTheme from '../themes';
 function NameForm() {// to handle add todo
     const [name, setName] = useState("");
     const history = useHistory();
@@ -68,24 +68,30 @@ function NameForm() {// to handle add todo
     }
 
     return (
-        <ThemeProvider>
+        <ThemeProvider theme={customTheme}>
             <CSSReset />
-            <Box borderWidth="1px" rounded="lg" mx="24" my="32" boxShadow="sm">
+            <Box borderWidth="1px" rounded="lg" mx="24" my="32" boxShadow="sm" bg="palettes.orange.background">
                 <Box>
-                    <Text fontSize="4xl" color='blue.500' textAlign="center" mx="8" p="6">
+                    <Text
+                        fontSize="4xl"
+                        color="palettes.orange.heading"
+                        textAlign="center"
+                        mx="8"
+                        p="6"
+                    >
                         Welcome to IQ 180
-                        </Text>
+                    </Text>
                 </Box>
                 <Box>
                     <FormControl p="16" mx="4" onSubmit={handleSubmit}>
-                        <FormLabel color='gray.600'>
+                        <FormLabel color="palettes.orange.body_dark">
                             Please tell us your name
-                            </FormLabel>
+                        </FormLabel>
                         <Input
                             placeholder="Player name"
                             value={name}
                             onKeyDown={handleKeyDown}
-                            onChange={e => setName(e.target.value)}
+                            onChange={(e) => setName(e.target.value)}
                         />
                     </FormControl>
                 </Box>
@@ -93,6 +99,7 @@ function NameForm() {// to handle add todo
                     <Button
                         variant="solid"
                         variantColor="orange"
+                        color="palettes.orange.body_light"
                         my="4"
                         onClick={handleSubmit}
                     >
@@ -114,7 +121,7 @@ function NameForm() {// to handle add todo
                                 <PopoverCloseButton />
                                 <Stack spacing={4}>
                                     <FormControl p="8" onSubmit={handleSubmit}>
-                                        <FormLabel color='gray.600'>
+                                        <FormLabel color="gray.600">
                                             Room code
                                         </FormLabel>
                                         <Input
@@ -122,8 +129,15 @@ function NameForm() {// to handle add todo
                                             onKeyDown={handleKeyDown}
                                         />
                                     </FormControl>
-                                    <ButtonGroup d="flex" justifyContent="flex-end">
-                                        <Button variantColor="orange" onClick={handleSubmit} m="4">
+                                    <ButtonGroup
+                                        d="flex"
+                                        justifyContent="flex-end"
+                                    >
+                                        <Button
+                                            variantColor="orange"
+                                            onClick={handleSubmit}
+                                            m="4"
+                                        >
                                             Join
                                         </Button>
                                     </ButtonGroup>
@@ -131,7 +145,6 @@ function NameForm() {// to handle add todo
                             </FocusLock>
                         </PopoverContent>
                     </Popover>
-
                 </ButtonGroup>
             </Box>
         </ThemeProvider>
