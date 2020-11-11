@@ -1,12 +1,15 @@
 import customTheme from './themes';
 import { Box, IconButton } from '@chakra-ui/core';
-export default function ThemeToggler() {
-  var colorMode = customTheme.colors.light;
+
+
+
+function ThemeToggler(props) {
+  
   return (
     <Box textAlign="right" py={4} mr={12}>
       <IconButton
         icon={toggleTheme ? 'moon' : 'sun'}
-        onClick={toggleTheme(colorMode)}
+        onClick={props.toggled}
         variant="ghost"
       />
     </Box>
@@ -15,9 +18,11 @@ export default function ThemeToggler() {
 
 function toggleTheme(colorMode) {
   if(colorMode === 'light') {
-  colorMode = customTheme.colors.dark
+  colorMode = customTheme.colors.palettes.dark
   }
   else if(colorMode === 'dark') {
-    colorMode = customTheme.colors.light
+    colorMode = customTheme.colors.palettes.light
   }
 }
+export default ThemeToggler;
+export var colorMode;

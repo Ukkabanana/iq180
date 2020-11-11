@@ -77,7 +77,7 @@ function NameForm() {// to handle add todo
                 <Box>
                     <Text
                         fontSize="4xl"
-                        color="palettes.orange.heading"
+                        color="palettes.${theme}.heading"
                         textAlign="center"
                         mx="8"
                         p="6"
