@@ -110,8 +110,8 @@ function NameForm() {// to handle add todo
 
             <ModalFooter>
               <Button variantColor="blue" mr={3} onClick={onClose}>
-                Close
-                      </Button>
+                {t("Close")}
+              </Button>
             </ModalFooter>
           </ModalContent>
         </Modal>

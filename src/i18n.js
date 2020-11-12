@@ -96,7 +96,7 @@ const resources = {
             "Setting": "การตั้งค่า",
             "Setting menu's here": "เมนูการตั้งค่าอยู่ตรงนี้",
             "We love Netcentric Architecture XD": "เรารักวิชานี้ ขอ เกรดดีๆให้เราหน่อยนะครับอาจารย์ XD",
-            "index": "ตัวเลขที่ใช้ได้",
+            "Index": "ตัวเลขที่ใช้ได้",
             "Expected Answer": "คำตอบที่ควรได้",
             "Please type in your answer": "กรุณาใส่คำตอบของคุณ",
             "Reset": "เริ่มเกมใหม่",

@@ -59,25 +59,27 @@ function Socket({ children }) {
 
 
         socket.on("RESET_RESULT", (result) => {
+            const resetTrans = t("Reseted");
+            const description = t("Please wait back in the waiting room");
             console.log(result)
+            if (result.isOK === true) {
+                history.push("/waiting")
+                toast({
+                    title: resetTrans,
+                    description: description,
+                    status: "warning",
+                    duration: 3000,
+                    isClosable: true,
+                })
+            }
         })
 
 
 
         socket.on("SET_CURRENT_STATE", (toState) => {
             console.log(toState)
-            const resetTrans = t("Reseted");
-            const description = t("Please wait back in the waiting room");
             switch (toState) {
                 case "WAITING":
-                    history.push("/waiting")
-                    toast({
-                        title: resetTrans,
-                        description: description,
-                        status: "warning",
-                        duration: 3000,
-                        isClosable: true,
-                    })
                     break;
                 case "ONGOING":
                     history.push("/game")
