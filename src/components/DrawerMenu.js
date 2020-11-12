@@ -47,7 +47,6 @@ function DrawerMenu() {
                     <DrawerBody>
                         <Text>Setting menu's here</Text>
                         <ThemeToggler />
-                        <PlayMusic />
                         <Button onClick={() => changeLanguage()}>{t('Change Language')}</Button>
                     </DrawerBody>
                     <DrawerFooter>

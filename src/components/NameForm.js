@@ -79,7 +79,6 @@ function NameForm() {// to handle add todo
             <Box borderWidth="1px" rounded="lg" mx="24" my="32" boxShadow="sm">  
             {/* bg="palettes.orange.background" */}
                 <Box>
-
                     <Text fontSize="4xl" color='blue.500' textAlign="center" mx="8" p="6">
                         {t('Welcome to IQ180')}
                         </Text>
