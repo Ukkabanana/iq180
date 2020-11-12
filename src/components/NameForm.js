@@ -32,28 +32,6 @@ function NameForm() {// to handle add todo
     const { t } = useTranslation();
     const { socket } = useContext(SocketContext)
 
-
-    // const roomCodeForm = () => {
-    //     return (
-    //         <Stack spacing={4}>
-    //             <FormControl p="16" mx="4" onSubmit={handleSubmit}>
-    //                 <FormLabel color='gray.600'>
-    //                     Room code
-    //                 </FormLabel>
-    //                 <Input
-    //                     placeholder="Please enter room code"
-    //                     onKeyDown={handleKeyDown}
-    //                 />
-    //             </FormControl>
-    //             <ButtonGroup d="flex" justifyContent="flex-end">
-    //                 <Button variantColor="orange" onClick={handleSubmit}>
-    //                     Join
-    //           </Button>
-    //             </ButtonGroup>
-    //         </Stack>
-    //     );
-    // };
-
     const handleSubmit = e => {
         e.preventDefault();
         if (!name) return;
@@ -72,24 +50,23 @@ function NameForm() {// to handle add todo
         }
     }
 
-    
+
     return (
         <ThemeProvider theme={customTheme}>
             <CSSReset />
-            <Box borderWidth="1px" rounded="lg" mx="24" my="32" boxShadow="sm">  
-            {/* bg="palettes.orange.background" */}
+            <Box borderWidth="1px" rounded="lg" mx="24" my="32" boxShadow="sm">
                 <Box>
 
-                    <Text fontSize="4xl" color='blue.500' textAlign="center" mx="8" p="6">
+                    <Text fontSize="4xl" fontWeight="bold" color='gray' textAlign="center" mx="8" p="6">
                         {t('Welcome to IQ180')}
-                        </Text>
+                    </Text>
                 </Box>
                 <Box>
                     <FormControl p="16" mx="4" onSubmit={handleSubmit}>
-                        <FormLabel color='gray.600'>
+                        <FormLabel color='gray'>
                             {t('Please tell us your name')}
-                            </FormLabel>
-                  
+                        </FormLabel>
+
                         <Input
                             placeholder={t("Player name")}
                             value={name}
@@ -98,11 +75,11 @@ function NameForm() {// to handle add todo
                         />
                     </FormControl>
                 </Box>
-                <ButtonGroup textAlign="center">
+                <ButtonGroup textAlign="center" d="flex" justifyContent="center" my="4">
                     <Button
                         variant="solid"
                         variantColor="orange"
-                        my="4"
+                        mx="4"
                         onClick={handleSubmit}
                     >
                         {t('Create game')}
@@ -112,7 +89,7 @@ function NameForm() {// to handle add todo
                             <Button
                                 variant="solid"
                                 variantColor="orange"
-                                my="4"
+                                mx="4"
                             >
                                 {t('Join game')}
                             </Button>
@@ -123,7 +100,7 @@ function NameForm() {// to handle add todo
                                 <PopoverCloseButton />
                                 <Stack spacing={4}>
                                     <FormControl p="8" onSubmit={handleSubmit}>
-                                        <FormLabel color='gray.600'>
+                                        <FormLabel color='gray'>
                                             {t('Room code')}
                                         </FormLabel>
                                         <Input

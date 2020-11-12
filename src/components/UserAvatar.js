@@ -14,25 +14,25 @@ function UserAvatar() {
     const [firstLeading, setFirstLeading] = useState(false);
     const [secondLeading, setSecondLeading] = useState(false);
     useEffect(() => {
-        setName1(allPlayers[0].name)
-        setName2(allPlayers[1].name)
-        if (allPlayers[0].currentScore > allPlayers[1].currentScore) {
+        setName1(allPlayers[0]?.name)
+        setName2(allPlayers[1]?.name)
+        if (allPlayers[0]?.currentScore > allPlayers[1]?.currentScore) {
             setFirstLeading(true)
-        } else if (allPlayers[0].currentScore < allPlayers[1].currentScore) {
+        } else if (allPlayers[0]?.currentScore < allPlayers[1]?.currentScore) {
             setSecondLeading(true)
         }
     }, [allPlayers])
     return (
-        <Box bg="purple.800" p="4" textAlign="center" color="white">
+        <Box bg="purple.800" p="4" textAlign="center" color="white" rounded="lg">
             <Box d="flex" alignItems="center" justify="space-between">
                 <Avatar name={name1} m={2}></Avatar>
                 {firstLeading && <UserBadge />}
-                <Text ml={4} fontSize="md" fontWeight="600">: {allPlayers[0].currentScore} </Text>
+                <Text ml={4} fontSize="md" fontWeight="600">: {allPlayers[0]?.currentScore} </Text>
             </Box>
             <Box d="flex" alignItems="center" justify="space-between">
                 <Avatar name={name2} m={2}></Avatar>
                 {secondLeading && <UserBadge />}
-                <Text ml={4} fontSize="md" fontWeight="600">: {allPlayers[1].currentScore} </Text>
+                <Text ml={4} fontSize="md" fontWeight="600">: {allPlayers[1]?.currentScore} </Text>
             </Box>
         </Box>
     );
