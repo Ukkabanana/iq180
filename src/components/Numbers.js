@@ -50,8 +50,6 @@ function Numbers() {
 
 
     const handleKeyDown = e => {
-        // console.log('keydown', e.key)
-        // console.log('value ', e.target.value)
         if (e.key === 'Enter') {
             socket.emit("SUBMIT", userAnswer)
             setUserAnswer("")
@@ -59,22 +57,7 @@ function Numbers() {
         }
         if (e.key === 'Backspace') {
             const input = e.target.value
-            // const string = input.substring(0, input.length - 1)
-            // console.log(string.substring(0, string.length - 1))
             setUserAnswer(input)
-            // const inputNumber = input.split('').filter(i => !Number.isNaN(Number(i))).map(Number)
-            // console.log("checker is: ", inputNumber)
-            // const clonedInput = [...inputNumber]
-            // const localNotUsed = []
-            // for (const i of numbers) {
-            //     const index = clonedInput.indexOf(i)
-            //     if (index === -1) {
-            //         localNotUsed.push(i)
-            //     } else {
-            //         clonedInput[index] = null
-            //     }
-            // }
-            // setNotUsed(localNotUsed)
         }
 
 
@@ -84,19 +67,6 @@ function Numbers() {
         console.log('value ', e.target.value)
         const input = e.target.value
         setUserAnswer(input)
-        // const inputNumber = input.split('').filter(i => !Number.isNaN(Number(i))).map(Number)
-        // console.log("checker is: ", inputNumber)
-        // const clonedInput = [...inputNumber]
-        // const localNotUsed = []
-        // for (const i of numbers) {
-        //     const index = clonedInput.indexOf(i)
-        //     if (index === -1) {
-        //         localNotUsed.push(i)
-        //     } else {
-        //         clonedInput[index] = null
-        //     }
-        // }
-        // setNotUsed(localNotUsed)
     }
 
     useEffect(() => {

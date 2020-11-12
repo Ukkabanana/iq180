@@ -18,6 +18,12 @@ import customTheme from './components/themes';
 
 
 function App() {
+  let lang = "th";
+  const { t, i18n } = useTranslation();
+  const changeLanguage = () => {
+    lang = i18next.language === "en" ? "th" : "en";
+    i18n.changeLanguage(lang)
+  }
     
     return (
         <ThemeProvider theme={customTheme}>
@@ -31,14 +37,6 @@ function App() {
                 <Grid className="container">
                     <Box className="box">
                     <NameForm />
-                    {/* <Link to="/game">
-                        <Button
-                        my="4"
-                        // onClick={goToGame}
-                        >
-                        Go to Game
-                        </Button>
-                    </Link> */}
                     
                     </Box>
                 </Grid>

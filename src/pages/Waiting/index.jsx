@@ -19,6 +19,7 @@ function Waiting() {
 
 
     return (
+
         <Grid className="container">
             <DrawerMenu />
             <Box className="box">
@@ -27,7 +28,11 @@ function Waiting() {
                 <Text>{t('Players in the room')}</Text>
                 <ShowPlayer player1={player1} player2={player2} />
             </Box>
-        </Grid>
+            <Box>
+                <Text mt={4} fontSize="l" fontWeight="bold">Players in the room</Text>
+            </Box>
+            <ShowPlayer player1={player1} player2={player2} />
+        </Box>
 
     );
 }
