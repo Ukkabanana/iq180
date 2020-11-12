@@ -49,6 +49,11 @@ const resources = {
             "Reset": "Reset",
             "Reseted": "Reseted",
             "Please wait back in the waiting room": "Please wait back in the waiting room",
+            "- Each player has only 1 minute to solve the equation by choosing the right mathematical symbols.": "- Each player has only 1 minute to solve the equation by choosing the right mathematical symbols.",
+            "- Each digit can be used only once.": "- Each digit can be used only once.",
+            "- Player who can solve the equation will receive 1 point.": "- Player who can solve the equation will receive 1 point.",
+            "- If both players can solve the equation, player who spend less time will receive 1 point.": "- If both players can solve the equation, player who spend less time will receive 1 point.",
+            "- And the player who get the higher score is the winner!": "- And the player who get the higher score is the winner!",
         },
     },
     th: {
@@ -97,6 +102,15 @@ const resources = {
             "Reset": "เริ่มเกมใหม่",
             "Reseted": "เกมได้ถูกรีเซ็ตแล้ว",
             "Please wait back in the waiting room": "กรุณากลับไปรออยู่ที่หน้าห้องรอก่อนนะ",
+            "How to play!": "วิธีเล่น",
+            "How to play": "วิธีเล่น",
+            "- Each player has only 1 minute to solve the equation by choosing the right mathematical symbols.": "- แต่ละคนมีเวลา 1 นาที ในการแก้ปัญหา โดยเลือก เลขและสัญลักษณ์ทางคณิตศาสตร์ที่ถูกต้อง",
+            "- Each digit can be used only once.": "-แต่ละเลขห้ามใช้ซ้ำกัน.",
+            "- Player who can solve the equation will receive 1 point.": "-เมื่อตอบถูกจะได้ 1 คะแนน เมื่อตอบผิดก็ไม่ได้เช่นกัน.",
+            "- If both players can solve the equation, player who spend less time will receive 1 point.": "-ถ้าตอบถูกทั้งคู่ คนที่ตอบได้ไวกว่าจะได้คะแนน",
+            "- And the player who get the higher score is the winner!": "- และคนที่ได้คะแนนมากที่สุดคือผู้ชนะ!",
+            "Close": "ปิด"
+
         },
     },
 };

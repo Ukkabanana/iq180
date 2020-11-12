@@ -88,25 +88,25 @@ function NameForm() {// to handle add todo
           ml="6"
           mr="2"
         >
-          How to play!
-                </Button>
+          {t("How to play!")}
+        </Button>
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader>How to play</ModalHeader>
+            <ModalHeader>{t("How to play!")}</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
-              - Each player has only 1 minute to solve the equation by
-              choosing the right mathematical symbols.
-                        <br />
-                      - Each digit can be used only once.
-                        <br />
-                      - Player who can solve the equation will receive 1 point.
-                        <br />- If both players can solve the equation, player who spend
-                        less time will receive 1 point.
-                        <br />
-                      - And the player who get the higher score is the winner!
-                    </ModalBody>
+              {t('- Each player has only 1 minute to solve the equation by choosing the right mathematical symbols.')}
+              <br />
+              {t('- Each digit can be used only once.')}
+              <br />
+              {t('- Player who can solve the equation will receive 1 point.')}
+              <br />
+              {t('- If both players can solve the equation, player who spend less time will receive 1 point.')}
+              <br />
+              {t('- And the player who get the higher score is the winner!')}
+
+            </ModalBody>
 
             <ModalFooter>
               <Button variantColor="blue" mr={3} onClick={onClose}>
