@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Box, Grid, Text } from '@chakra-ui/core'
 import ShowPlayer from '../../components/ShowPlayer'
 import { SocketContext } from '../../components/Socket';
-
+import DrawerMenu from '../../components/DrawerMenu';
 function Waiting() {
     const { roomCode } = useContext(SocketContext)
     const submit = (name) => {
@@ -18,6 +18,7 @@ function Waiting() {
 
     return (
         <Grid className="container">
+            <DrawerMenu />
             <Box className="box">
                 <Text> Hello Players </Text>
                 <Text>Room code: {roomCode}</Text>

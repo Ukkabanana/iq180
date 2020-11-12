@@ -14,7 +14,7 @@ import Waiting from './pages/Waiting/index'
 import Game from './pages/Game/index'
 import Round from './pages/Round/index'
 import Result from './pages/Result/index'
-
+import DrawerMenu from './components/DrawerMenu'
 import Socket from './components/Socket'
 import PlayMusic from './components/PlayMusic';
 
@@ -38,6 +38,7 @@ function App() {
             <Socket>
             <Switch>
                 <Route exact path="/">
+                <DrawerMenu />
                 <Grid className="container">
                     <Box className="box">
                     <NameForm />
@@ -54,16 +55,20 @@ function App() {
                 </Grid>
                 
                 </Route>
-                <Route path="/game">
+                <Route path="/game">  
+                <DrawerMenu />                                             
                 <Game />
                 </Route>
                 <Route path="/waiting">
+                <DrawerMenu />                                              
                 <Waiting />
                 </Route>
                 <Route path="/round">
+                <DrawerMenu />                                             
                 <Round />
                 </Route>
                 <Route path="/result">
+                <DrawerMenu />                                              
                 <Result />
                 </Route>
             </Switch>
