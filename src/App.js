@@ -6,7 +6,7 @@ import {
   Route,
 } from "react-router-dom";
 
-import { Box, Grid, ThemeProvider, CSSReset,theme } from '@chakra-ui/core'
+import { Box, Grid, ThemeProvider, CSSReset,theme, ColorModeProvider, useColorMode, IconButton } from '@chakra-ui/core'
 import NameForm from './components/NameForm'
 import Waiting from './pages/Waiting/index'
 import Game from './pages/Game/index'
@@ -15,32 +15,24 @@ import Result from './pages/Result/index'
 import Socket from './components/Socket'
 
 import customTheme from './components/themes';
-import ThemeToggler, {colorMode} from './components/ThemeToggler';
-var colorM = "light";
+import ThemeToggler from './components/ThemeToggler';
+// import TextToggler from './components/ThemeToggler';
+
 function App() {
-    
-    function toggleHandler() {
-        console.log('Butonn clicked')
-        if (colorM === "light") {
-            colorM = 'dark';
-        } else if (colorM === "dark") {
-            colorM = 'light';
-        }
-        console.log(`palettes.${colorM}.background`);
-    }
-    
+
   return (
       <ThemeProvider theme={customTheme}>
+        <ColorModeProvider>
           <CSSReset />
-          <ThemeToggler toggled={toggleHandler} />
+          <ThemeToggler toggled={ThemeToggler} />
+          {/* <ThemeToggler toggled={TextToggler} /> */}
           <Router>
               <Socket>
                   <Switch>
                       <Route exact path="/">
                           <Grid
-                              className="container"
-                              bg={`palettes.${colorM}.background`}
-                          >
+                            className="container"
+                            >
                               <Box className="box">
                                   <NameForm />
                                   {/* <Link to="/game">
@@ -69,6 +61,7 @@ function App() {
                   </Switch>
               </Socket>
           </Router>
+          </ColorModeProvider>
       </ThemeProvider>
   );
 }

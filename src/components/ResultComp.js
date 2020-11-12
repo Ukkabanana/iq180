@@ -49,10 +49,10 @@ function ResultComp() {
                     <h3> {name}'s </h3>
                     <h1>{result}</h1>
                     <Link to="/">
-                        <Button bg="teal">Quit</Button>
+                        <Button>Quit</Button>
                     </Link>
                     <Link to="/waiting">
-                        <Button bg="teal">Play again</Button>
+                        <Button>Play again</Button>
                     </Link>
                 </Box>
             </Grid>

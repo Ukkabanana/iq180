@@ -121,7 +121,7 @@ function Numbers() {
         <Stack spacing={4}>
             <Box d="flex" alignItems="center" justify="space-between">
                 {notUsed.map((number, index) => (
-                    <Box key={index} bg="gray.100" mx="2" p="4" >
+                    <Box key={index} bg="orange.400" mx="2" p="4" >
                         {number}
                     </Box>
                 ))}

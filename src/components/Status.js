@@ -31,23 +31,19 @@ function Status() {// to handle status box
 
 
     return (
-        <ThemeProvider theme={customTheme}>
+        <ThemeProvider>
             <CSSReset />
             <Flex alignItems="center" justify="space-between">
                 <Grid gap={2}>
                     <Box
-                        bg="purple.800"
                         p="4"
                         textAlign="center"
-                        color="palettes.orange.body_light"
                     >
                         <Text>Round: {round}</Text>
                     </Box>
                     <Box
-                        bg="purple.800"
                         p="4"
                         textAlign="center"
-                        color="palettes.orange.body_light"
                     >
                         <Text>Scoreboard</Text>
                         <Text>
@@ -59,7 +55,7 @@ function Status() {// to handle status box
                     </Box>
                 </Grid>
                 <Box textAlign="center">
-                    <Text fontSize="4xl" fontWeight="800" color="purple.800">
+                    <Text fontSize="4xl" fontWeight="800">
                         It's {displayName}'s Turn!
                     </Text>
                 </Box>
@@ -67,12 +63,11 @@ function Status() {// to handle status box
                     <Text
                         fontWeight="800"
                         fontSize="xl"
-                        color="orange.400"
                         mx="2"
                     >
                         {time}
                     </Text>
-                    <Text fontWeight="400" color="purple.800" mr="8">
+                    <Text fontWeight="400">
                         Seconds left!
                     </Text>
                 </Box>

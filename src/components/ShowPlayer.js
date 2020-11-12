@@ -31,7 +31,7 @@ function ShowPlayer() {// to handle add todo
                 <h1>{player2.name}</h1> */}
                 <h1>{allPlayers[0]?.name}</h1>
                 <h1>{allPlayers[1]?.name}</h1>
-                <Button onClick={handleSubmit}>START</Button>
+                <Button onClick={handleSubmit} variantColor="orange">START</Button>
             </Box>
         </Grid>
     );

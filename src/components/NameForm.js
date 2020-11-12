@@ -73,11 +73,12 @@ function NameForm() {// to handle add todo
     return (
         <ThemeProvider theme={customTheme}>
             <CSSReset />
-            <Box borderWidth="1px" rounded="lg" mx="24" my="32" boxShadow="sm" bg="palettes.orange.background">
+            <Box borderWidth="1px" rounded="lg" mx="24" my="32" boxShadow="sm">  
+            {/* bg="palettes.orange.background" */}
                 <Box>
                     <Text
                         fontSize="4xl"
-                        color="palettes.${theme}.heading"
+                        // color="palettes.${theme}.heading"
                         textAlign="center"
                         mx="8"
                         p="6"
@@ -87,7 +88,7 @@ function NameForm() {// to handle add todo
                 </Box>
                 <Box>
                     <FormControl p="16" mx="4" onSubmit={handleSubmit}>
-                        <FormLabel color="palettes.orange.body_dark">
+                        <FormLabel>
                             Please tell us your name
                         </FormLabel>
                         <Input
@@ -102,7 +103,6 @@ function NameForm() {// to handle add todo
                     <Button
                         variant="solid"
                         variantColor="orange"
-                        color="palettes.orange.body_light"
                         my="4"
                         onClick={handleSubmit}
                     >

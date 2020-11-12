@@ -4,7 +4,12 @@ import {theme} from '@chakra-ui/core';
 
 const customTheme = {
     ...theme,
-    fonts: {
+    font1: {
+        heading: "'David Libre', serif",
+        body: "'Roboto', sans-serif",
+        mono: "'Source Code Pro', monospace",
+    },
+    font2: {
         heading: "'David Libre', serif",
         body: "'Roboto', sans-serif",
         mono: "'Source Code Pro', monospace",
@@ -20,22 +25,22 @@ const customTheme = {
                 body_light: "#4A5568",
                 background: "#FEEBC8",
             },
-            dark: {
-                heading: "#9C4221",
-                label: "#FFFAF0",
-                countdown: "#ED8936",
-                body_dark: "#652B19",
-                body_light: "#4A5568",
-                background: "#000",
-            },
-            light: {
-                heading: "#9C4221",
-                label: "#FFFAF0",
-                countdown: "#ED8936",
-                body_dark: "#652B19",
-                body_light: "#4A5568",
-                background: "#FFF",
-            },
+            // dark: {
+            //     heading: "#9C4221",
+            //     label: "#FFFAF0",
+            //     countdown: "#ED8936",
+            //     body_dark: "#652B19",
+            //     body_light: "#4A5568",
+            //     background: "#000",
+            // },
+            // light: {
+            //     heading: "#9C4221",
+            //     label: "#FFFAF0",
+            //     countdown: "#ED8936",
+            //     body_dark: "#652B19",
+            //     body_light: "#4A5568",
+            //     background: "#FFF",
+            // },
         },
     },
 };

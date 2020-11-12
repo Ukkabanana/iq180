@@ -1,28 +1,34 @@
-import customTheme from './themes';
-import { Box, IconButton } from '@chakra-ui/core';
+import { Box, IconButton, useColorMode } from '@chakra-ui/core';
 
 
 
-function ThemeToggler(props) {
-  
+function ThemeToggler() {
+  const { colorMode, toggleColorMode } = useColorMode();
+
   return (
     <Box textAlign="right" py={4} mr={12}>
       <IconButton
-        icon={toggleTheme ? 'moon' : 'sun'}
-        onClick={props.toggled}
+        icon={colorMode ==='light' ? 'moon' : 'sun'}
+        onClick={toggleColorMode}
         variant="ghost"
       />
     </Box>
   );
 }
 
-function toggleTheme(colorMode) {
-  if(colorMode === 'light') {
-  colorMode = customTheme.colors.palettes.dark
-  }
-  else if(colorMode === 'dark') {
-    colorMode = customTheme.colors.palettes.light
-  }
-}
+// export function TextToggler() {
+//   const { colorMode, toggleColorMode } = useColorMode();
+
+//   return (
+//     <Box textAlign="right" py={4} mr={12}>
+//       <IconButton
+//         icon={colorMode ==='light' ? 'moon' : 'sun'}
+//         onClick={toggleColorMode}
+//         variant="ghost"
+//       />
+//     </Box>
+//   );
+// }
+
 export default ThemeToggler;
 export var colorMode;

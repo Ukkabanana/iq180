@@ -29,7 +29,7 @@ function RoundComp() {
                     <h2>Score : {score}</h2>
                     <h2>Time used : {time}</h2>
                     <Link to="/game">
-                        <Button bg="teal">Next round</Button>
+                        <Button>Next round</Button>
                     </Link>
                 </Box>
             </Grid>
