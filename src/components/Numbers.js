@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from "react-router-dom";
-
+import i18n from "i18next";
 import {
     Text,
     Button,

@@ -18,14 +18,6 @@ import {
   PopoverArrow,
   PopoverCloseButton,
   Stack,
-} from "@chakra-ui/core";
-import { SocketContext } from "./Socket";
-import i18n from "i18next";
-import { useTranslation } from "react-i18next";
-import customTheme from "./themes";
-import colorMode from "./ThemeToggler";
-
-import {
   Modal,
   ModalOverlay,
   ModalContent,
@@ -34,23 +26,28 @@ import {
   ModalBody,
   ModalCloseButton,
 } from "@chakra-ui/core";
+import { SocketContext } from "./Socket";
+import i18n from "i18next";
+import { useTranslation } from "react-i18next";
+import customTheme from "./themes";
+import colorMode from "./ThemeToggler";
 
 
 function NameForm() {// to handle add todo
-    const [name, setName] = useState("");
-    const history = useHistory();
-    const firstFieldRef = React.useRef(null);
-    const { t } = useTranslation();
-    const { socket } = useContext(SocketContext)
-    const { isOpen, onOpen, onClose } = useDisclosure();
+  const [name, setName] = useState("");
+  const history = useHistory();
+  const firstFieldRef = React.useRef(null);
+  const { t } = useTranslation();
+  const { socket } = useContext(SocketContext)
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
-    const handleSubmit = e => {
-        e.preventDefault();
-        if (!name) return;
-        socket.emit("JOIN_ROOM", { name })
-        setName("")
-        history.push("/waiting")
-    };
+  const handleSubmit = e => {
+    e.preventDefault();
+    if (!name) return;
+    socket.emit("JOIN_ROOM", { name })
+    setName("")
+    history.push("/waiting")
+  };
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -64,16 +61,16 @@ function NameForm() {// to handle add todo
     <ThemeProvider theme={customTheme}>
       <CSSReset />
       <Box borderWidth="1px" rounded="lg" mx="24" my="32" boxShadow="sm">
-        {/* bg="palettes.orange.background" */}
         <Box>
-          <Text fontSize="4xl" color="blue.500" textAlign="center" mx="8" p="6">
-            {t("Welcome to IQ180")}
+
+          <Text fontSize="4xl" fontWeight="bold" color='gray' textAlign="center" mx="8" p="6">
+            {t('Welcome to IQ180')}
           </Text>
         </Box>
         <Box>
           <FormControl p="16" mx="4" onSubmit={handleSubmit}>
-            <FormLabel color="gray.600">
-              {t("Please tell us your name")}
+            <FormLabel color='gray'>
+              {t('Please tell us your name')}
             </FormLabel>
 
             <Input
@@ -92,49 +89,15 @@ function NameForm() {// to handle add todo
           mr="2"
         >
           How to play!
-        </Button>
-
-    return (
-        <ThemeProvider theme={customTheme}>
-            <CSSReset />
-            <Box borderWidth="1px" rounded="lg" mx="24" my="32" boxShadow="sm">
-                <Box>
-
-                    <Text fontSize="4xl" fontWeight="bold" color='gray' textAlign="center" mx="8" p="6">
-                        {t('Welcome to IQ180')}
-                    </Text>
-                </Box>
-                <Box>
-                    <FormControl p="16" mx="4" onSubmit={handleSubmit}>
-                        <FormLabel color='gray'>
-                            {t('Please tell us your name')}
-                        </FormLabel>
-
-                        <Input
-                            placeholder={t("Player name")}
-                            value={name}
-                            onKeyDown={handleKeyDown}
-                            onChange={(e) => setName(e.target.value)}
-                        />
-                    </FormControl>
-                </Box>
-                <Button
-                  onClick={onOpen}
-                  variant="solid"
-                  variantColor="blue"
-                  ml="6"
-                  mr="2"
-                >
-                  How to play!
                 </Button>
-                <Modal isOpen={isOpen} onClose={onClose}>
-                  <ModalOverlay />
-                  <ModalContent>
-                    <ModalHeader>How to play</ModalHeader>
-                    <ModalCloseButton />
-                    <ModalBody>
-                      - Each player has only 1 minute to solve the equation by
-                        choosing the right mathematical symbols.
+        <Modal isOpen={isOpen} onClose={onClose}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>How to play</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
+              - Each player has only 1 minute to solve the equation by
+              choosing the right mathematical symbols.
                         <br />
                       - Each digit can be used only once.
                         <br />
@@ -145,59 +108,59 @@ function NameForm() {// to handle add todo
                       - And the player who get the higher score is the winner!
                     </ModalBody>
 
-                    <ModalFooter>
-                      <Button variantColor="blue" mr={3} onClick={onClose}>
-                        Close
+            <ModalFooter>
+              <Button variantColor="blue" mr={3} onClick={onClose}>
+                Close
                       </Button>
-                    </ModalFooter>
-                  </ModalContent>
-                </Modal>
-                <ButtonGroup textAlign="center" d="flex" justifyContent="center" my="4">
-                    <Button
-                        variant="solid"
-                        variantColor="orange"
-                        mx="4"
-                        onClick={handleSubmit}
-                    >
-                        {t('Create game')}
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
+        <ButtonGroup textAlign="center" d="flex" justifyContent="center" my="4">
+          <Button
+            variant="solid"
+            variantColor="orange"
+            mx="4"
+            onClick={handleSubmit}
+          >
+            {t('Create game')}
+          </Button>
+          <Popover>
+            <PopoverTrigger>
+              <Button
+                variant="solid"
+                variantColor="orange"
+                mx="4"
+              >
+                {t('Join game')}
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent>
+              <FocusLock returnFocus persistentFocus={false}>
+                <PopoverArrow bg="white" />
+                <PopoverCloseButton />
+                <Stack spacing={4}>
+                  <FormControl p="8" onSubmit={handleSubmit}>
+                    <FormLabel color='gray'>
+                      {t('Room code')}
+                    </FormLabel>
+                    <Input
+                      placeholder={t("Please enter room code")}
+                      onKeyDown={handleKeyDown}
+                    />
+                  </FormControl>
+                  <ButtonGroup d="flex" justifyContent="flex-end">
+                    <Button variantColor="orange" onClick={handleSubmit} m="4">
+                      {t('Join')}
                     </Button>
-                    <Popover>
-                        <PopoverTrigger>
-                            <Button
-                                variant="solid"
-                                variantColor="orange"
-                                mx="4"
-                            >
-                                {t('Join game')}
-                            </Button>
-                        </PopoverTrigger>
-                        <PopoverContent>
-                            <FocusLock returnFocus persistentFocus={false}>
-                                <PopoverArrow bg="white" />
-                                <PopoverCloseButton />
-                                <Stack spacing={4}>
-                                    <FormControl p="8" onSubmit={handleSubmit}>
-                                        <FormLabel color='gray'>
-                                            {t('Room code')}
-                                        </FormLabel>
-                                        <Input
-                                            placeholder={t("Please enter room code")}
-                                            onKeyDown={handleKeyDown}
-                                        />
-                                    </FormControl>
-                                    <ButtonGroup d="flex" justifyContent="flex-end">
-                                        <Button variantColor="orange" onClick={handleSubmit} m="4">
-                                            {t('Join')}
-                                        </Button>
-                                    </ButtonGroup>
-                                </Stack>
-                            </FocusLock>
-                        </PopoverContent>
-                    </Popover>
-                </ButtonGroup>
-            </Box>
-        </ThemeProvider>
-    );
+                  </ButtonGroup>
+                </Stack>
+              </FocusLock>
+            </PopoverContent>
+          </Popover>
+        </ButtonGroup>
+      </Box>
+    </ThemeProvider>
+  );
 }
 
 export default NameForm;

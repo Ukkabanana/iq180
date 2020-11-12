@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import ThemeToggler from './ThemeToggler';
 import PlayMusic from './PlayMusic';
 import { useTranslation } from 'react-i18next';
@@ -18,16 +18,23 @@ import {
     Button,
     Box,
 } from '@chakra-ui/core';
+import { SocketContext } from './Socket'
 
 function DrawerMenu() {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const btnRef = React.useRef();
+
+    const { socket } = useContext(SocketContext)
 
     let lang = "th";
     const { t, i18n } = useTranslation();
     const changeLanguage = () => {
         lang = i18next.language === "en" ? "th" : "en";
         i18n.changeLanguage(lang)
+    }
+    const resetGame = () => {
+        socket.emit("RESET", {})
+        console.log("emit reset")
     }
     return (
         <>
@@ -52,7 +59,14 @@ function DrawerMenu() {
                         <Box my={4}>
                             <PlayMusic />
                         </Box>
-                        <Button onClick={() => changeLanguage()}>{t('Change Language')}</Button>
+                        <Box my={4}>
+                            <Button onClick={() => changeLanguage()}>{t('Change Language')}</Button>
+                        </Box>
+                        <Box my={4}>
+                            <Button variantColor="red" onClick={() => resetGame()}>
+                                {t('Reset')}
+                            </Button>
+                        </Box>
                     </DrawerBody>
                     <DrawerFooter>
                         <Text>{t('We love Netcentric Architecture XD')}</Text>
