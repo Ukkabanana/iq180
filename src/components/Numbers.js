@@ -90,15 +90,32 @@ function Numbers() {
 
     return (
         <Stack spacing={4}>
-            <Box d="flex" alignItems="center" justify="space-between">
+            <Box d="flex" justifyContent="center">
+                <Text fontSize="l" fontWeight="medium">
+                    {t("Index")}
+                </Text>
+            </Box>
+            <Box d="flex" alignItems="center" justify="space-between" mb="4">
                 {notUsed.map((number, index) => (
-                    <Box key={index} bg="orange.400" mx="2" p="4" >
+                    <Box key={index} bg="orange.200" mx="2" p="4" rounded="md" >
                         {number}
                     </Box>
                 ))}
             </Box>
-            <Box bg="orange.400" alingnItems="center" justify="space-between">
-                {answer}
+            <Box d="flex" justifyContent="center">
+                <Text fontSize="l" fontWeight="medium">
+                    {t("Expected Answer")}
+                </Text>
+            </Box>
+            <Box bg="orange.200" d="flex" justifyContent="center" rounded="lg">
+                <Text fontWeight="semibold" fontSize="2xl">
+                    {answer}
+                </Text>
+            </Box>
+            <Box d="flex" justifyContent="center">
+                <Text fontSize="l" fontWeight="medium">
+                    {t("Please type in your answer")}
+                </Text>
             </Box>
             <Input
                 placeholder={t("Your answer")}

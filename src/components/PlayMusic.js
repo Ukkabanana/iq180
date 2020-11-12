@@ -1,13 +1,14 @@
 import React, { useContext, useState } from "react";
 import {
-  Input,
-  Button,
-  Box,
-  ThemeProvider,
-  CSSReset,
-  Text,
-} from "@chakra-ui/core";
-import { useTranslation } from "react-i18next";
+    Input,
+    Button,
+    Box,
+    ThemeProvider,
+    CSSReset,
+    Text,
+    ButtonGroup
+} from '@chakra-ui/core';
+import { useTranslation } from 'react-i18next';
 
 function PlayMusic() {
   console.log("Music available");
@@ -38,18 +39,18 @@ function PlayMusic() {
     console.log(NowPlay);
   };
 
-  return (
-    <ThemeProvider>
-      <CSSReset />
-      <Box>
-        <Text ml={{ md: 6 }}>
-          {t("Music ")}: 
-          <Button onClick={start}>{t("Play")}</Button>
-          <Button onClick={pause}>{t("Pause")}</Button>
-        </Text>
-      </Box>
-    </ThemeProvider>
-  );
+    return (
+        <ThemeProvider>
+            <CSSReset />
+            <Box>
+                <Text fontWeight="semibold" fontSize="l">{t('Music ')}</Text>
+                <ButtonGroup spacing={2}>
+                    <Button variantColor="green" onClick={start}>{t('Play')}</Button>
+                    <Button variantColor="red" onClick={pause}>{t('Pause')}</Button>
+                </ButtonGroup>
+            </Box>
+        </ThemeProvider>
+    )
 }
 
 export default PlayMusic;

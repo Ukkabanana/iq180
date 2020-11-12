@@ -16,6 +16,7 @@ import {
     Stack,
     useDisclosure,
     Button,
+    Box,
 } from '@chakra-ui/core';
 
 function DrawerMenu() {
@@ -24,14 +25,14 @@ function DrawerMenu() {
 
     let lang = "th";
     const { t, i18n } = useTranslation();
-    const changeLanguage = () =>{
+    const changeLanguage = () => {
         lang = i18next.language === "en" ? "th" : "en";
         i18n.changeLanguage(lang)
     }
     return (
         <>
             <Button ref={btnRef} variantColor="teal" mx="4" my="4" onClick={onOpen}>
-                Setting
+                {t('Setting')}
             </Button>
             <Drawer
                 isOpen={isOpen}
@@ -43,14 +44,18 @@ function DrawerMenu() {
                 <DrawerOverlay />
                 <DrawerContent>
                     <DrawerCloseButton />
-                    <DrawerHeader>Setting</DrawerHeader>
+                    <DrawerHeader>{t('Setting')}</DrawerHeader>
                     <DrawerBody>
-                        <Text>Setting menu's here</Text>
-                        <ThemeToggler />
+                        <Box my={4}>
+                            <ThemeToggler />
+                        </Box>
+                        <Box my={4}>
+                            <PlayMusic />
+                        </Box>
                         <Button onClick={() => changeLanguage()}>{t('Change Language')}</Button>
                     </DrawerBody>
                     <DrawerFooter>
-                        <Text>We love Netcentric Architecture XD</Text>
+                        <Text>{t('We love Netcentric Architecture XD')}</Text>
                     </DrawerFooter>
                 </DrawerContent>
             </Drawer>
