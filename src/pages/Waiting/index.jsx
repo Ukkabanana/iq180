@@ -19,18 +19,10 @@ function Waiting() {
 
 
     return (
-
-        <Grid className="container">
-            <DrawerMenu />
-            <Box className="box">
-                <Text> {t('Hello Players')} </Text>
-                <Text>{t('Room code')}: {roomCode}</Text>
-                <Text>{t('Players in the room')}</Text>
-                <ShowPlayer player1={player1} player2={player2} />
-            </Box>
-            <Box>
-                <Text mt={4} fontSize="l" fontWeight="bold">Players in the room</Text>
-            </Box>
+        <Box className="box">
+            <Text> {t('Hello Players')} </Text>
+            <Text>{t('Room code')}: {roomCode}</Text>
+            <Text>{t('Players in the room')}</Text>
             <ShowPlayer player1={player1} player2={player2} />
         </Box>
 
