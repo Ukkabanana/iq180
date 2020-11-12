@@ -1,28 +1,39 @@
-import React, { useContext, useState } from 'react';
-import FocusLock from "react-focus-lock"
+import React, { useContext, useState } from "react";
+import FocusLock from "react-focus-lock";
 import { useHistory } from "react-router-dom";
 import {
-    Text,
-    Input,
-    Button,
-    Box,
-    FormControl,
-    FormLabel,
-    ThemeProvider,
-    CSSReset,
-    Popover,
-    ButtonGroup,
-    PopoverTrigger,
-    PopoverContent,
-    PopoverArrow,
-    PopoverCloseButton,
-    Stack
-} from '@chakra-ui/core';
-import { SocketContext } from './Socket';
+  Text,
+  Input,
+  Button,
+  Box,
+  FormControl,
+  FormLabel,
+  ThemeProvider,
+  useDisclosure,
+  CSSReset,
+  Popover,
+  ButtonGroup,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverArrow,
+  PopoverCloseButton,
+  Stack,
+} from "@chakra-ui/core";
+import { SocketContext } from "./Socket";
 import i18n from "i18next";
 import { useTranslation } from "react-i18next";
-import customTheme from './themes';
-import colorMode from './ThemeToggler';
+import customTheme from "./themes";
+import colorMode from "./ThemeToggler";
+
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+} from "@chakra-ui/core";
 
 
 function NameForm() {// to handle add todo
@@ -31,6 +42,7 @@ function NameForm() {// to handle add todo
     const firstFieldRef = React.useRef(null);
     const { t } = useTranslation();
     const { socket } = useContext(SocketContext)
+    const { isOpen, onOpen, onClose } = useDisclosure();
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -40,16 +52,47 @@ function NameForm() {// to handle add todo
         history.push("/waiting")
     };
 
-
-
-    const handleKeyDown = e => {
-        if (e.key === 'Enter') {
-            socket.emit("JOIN_ROOM", { name })
-            setName("")
-            history.push("/waiting")
-        }
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      socket.emit("JOIN_ROOM", { name });
+      setName("");
+      history.push("/waiting");
     }
+  };
 
+  return (
+    <ThemeProvider theme={customTheme}>
+      <CSSReset />
+      <Box borderWidth="1px" rounded="lg" mx="24" my="32" boxShadow="sm">
+        {/* bg="palettes.orange.background" */}
+        <Box>
+          <Text fontSize="4xl" color="blue.500" textAlign="center" mx="8" p="6">
+            {t("Welcome to IQ180")}
+          </Text>
+        </Box>
+        <Box>
+          <FormControl p="16" mx="4" onSubmit={handleSubmit}>
+            <FormLabel color="gray.600">
+              {t("Please tell us your name")}
+            </FormLabel>
+
+            <Input
+              placeholder={t("Player name")}
+              value={name}
+              onKeyDown={handleKeyDown}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </FormControl>
+        </Box>
+        <Button
+          onClick={onOpen}
+          variant="solid"
+          variantColor="blue"
+          ml="6"
+          mr="2"
+        >
+          How to play!
+        </Button>
 
     return (
         <ThemeProvider theme={customTheme}>
@@ -75,6 +118,40 @@ function NameForm() {// to handle add todo
                         />
                     </FormControl>
                 </Box>
+                <Button
+                  onClick={onOpen}
+                  variant="solid"
+                  variantColor="blue"
+                  ml="6"
+                  mr="2"
+                >
+                  How to play!
+                </Button>
+                <Modal isOpen={isOpen} onClose={onClose}>
+                  <ModalOverlay />
+                  <ModalContent>
+                    <ModalHeader>How to play</ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody>
+                      - Each player has only 1 minute to solve the equation by
+                        choosing the right mathematical symbols.
+                        <br />
+                      - Each digit can be used only once.
+                        <br />
+                      - Player who can solve the equation will receive 1 point.
+                        <br />- If both players can solve the equation, player who spend
+                        less time will receive 1 point.
+                        <br />
+                      - And the player who get the higher score is the winner!
+                    </ModalBody>
+
+                    <ModalFooter>
+                      <Button variantColor="blue" mr={3} onClick={onClose}>
+                        Close
+                      </Button>
+                    </ModalFooter>
+                  </ModalContent>
+                </Modal>
                 <ButtonGroup textAlign="center" d="flex" justifyContent="center" my="4">
                     <Button
                         variant="solid"
@@ -123,4 +200,4 @@ function NameForm() {// to handle add todo
     );
 }
 
-export default NameForm
+export default NameForm;

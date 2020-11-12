@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState } from "react";
 import {
     Input,
     Button,
@@ -11,17 +11,33 @@ import {
 import { useTranslation } from 'react-i18next';
 
 function PlayMusic() {
-    const { t } = useTranslation();
-    let audio = new Audio("/music1.mp3")
-    const start = () => {
-        audio.play()
-        console.log("Play music")
-        audio.loop = true;
+  console.log("Music available");
+  const { t } = useTranslation();
+  const [NowPlay, setNowPlay] = useState(true);
+  let audio = new Audio("/music1.mp3");
+  const start = () => {
+    audio.play();
+    console.log("Play music");
+    audio.loop = true;
+  };
+  const pause = () => {
+    audio.pause();
+    console.log("Pause music");
+  };
+
+  const play = () => {
+    if (NowPlay === true) {
+      audio.play();
+      console.log("Play music");
+      audio.loop = true;
+      setNowPlay(false);
+    } else {
+      audio.pause();
+      console.log("Pause music");
+      setNowPlay(true);
     }
-    const pause = () => {
-        audio.pause()
-        console.log("Pause music")
-    }
+    console.log(NowPlay);
+  };
 
     return (
         <ThemeProvider>
@@ -37,4 +53,4 @@ function PlayMusic() {
     )
 }
 
-export default PlayMusic
+export default PlayMusic;
