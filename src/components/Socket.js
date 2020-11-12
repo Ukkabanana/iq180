@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import io from 'socket.io-client'
 import { useHistory } from "react-router-dom";
+import { useToast } from '@chakra-ui/core';
 
 export const SocketContext = React.createContext({
     allPlayers: [],
@@ -20,7 +21,7 @@ function Socket({ children }) {
     const socket = useMemo(() => io("https://netcentric-iq180.herokuapp.com"), []);
 
     let history = useHistory();
-
+    const toast = useToast();
     const [allPlayers, setAllPlayers] = useState([]);
     const [roomCode, setRoomCode] = useState("");
     const [myUID, setMyUID] = useState("")
@@ -86,6 +87,15 @@ function Socket({ children }) {
         //from Status.js
         socket.on("SET_REMAINING_TIME", (countdown) => {
             setTime(countdown)
+            if (countdown === 0) {
+                toast({
+                    title: "Time's up!",
+                    description: "Think faster next round",
+                    status: "warning",
+                    duration: 3000,
+                    isClosable: true,
+                })
+            }
             // console.log("time left", countdown)
         })//wait for result of joining game from backend.
         socket.on("SET_CURRENT_PLAYER", (currentPlayer) => {
@@ -108,6 +118,23 @@ function Socket({ children }) {
 
         socket.on("SUBMIT_RESULT", (response) => {
             console.log(response)
+            if (response.isOK) {
+                toast({
+                    title: "Your answer is correct!",
+                    description: "Congratulations! your score +1",
+                    status: "success",
+                    duration: 3000,
+                    isClosable: true,
+                })
+            } else if (!response.isOK) {
+                toast({
+                    title: "Your answer is wrong",
+                    description: "Nice try, but try harder ;)",
+                    status: "error",
+                    duration: 3000,
+                    isClosable: true,
+                })
+            }
         })
 
 

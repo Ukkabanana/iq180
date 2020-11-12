@@ -15,8 +15,10 @@ import {
     CSSReset
 } from '@chakra-ui/core';
 import { SocketContext } from './Socket';
+import { useTranslation } from "react-i18next";
 
 function ResultComp() {
+    const {t} = useTranslation();
     const { socket, allPlayers, myUID } = useContext(SocketContext)
     const [name, setName] = useState("");
     const [result, setResult] = useState("");
@@ -49,10 +51,10 @@ function ResultComp() {
                     <h3> {name}'s </h3>
                     <h1>{result}</h1>
                     <Link to="/">
-                        <Button>Quit</Button>
+                        <Button bg="teal">{t("Quit")}</Button>
                     </Link>
                     <Link to="/waiting">
-                        <Button>Play again</Button>
+                        <Button bg="teal">{t("Play Again")}</Button>
                     </Link>
                 </Box>
             </Grid>

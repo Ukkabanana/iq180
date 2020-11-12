@@ -19,14 +19,17 @@ import {
     Stack
 } from '@chakra-ui/core';
 import { SocketContext } from './Socket';
+import i18n from "i18next";
+import { useTranslation } from "react-i18next";
 import customTheme from './themes';
 import colorMode from './ThemeToggler';
+
 
 function NameForm() {// to handle add todo
     const [name, setName] = useState("");
     const history = useHistory();
     const firstFieldRef = React.useRef(null);
-
+    const { t } = useTranslation();
     const { socket } = useContext(SocketContext)
 
 
@@ -76,23 +79,19 @@ function NameForm() {// to handle add todo
             <Box borderWidth="1px" rounded="lg" mx="24" my="32" boxShadow="sm">  
             {/* bg="palettes.orange.background" */}
                 <Box>
-                    <Text
-                        fontSize="4xl"
-                        // color="palettes.${theme}.heading"
-                        textAlign="center"
-                        mx="8"
-                        p="6"
-                    >
-                        Welcome to IQ 180
-                    </Text>
+
+                    <Text fontSize="4xl" color='blue.500' textAlign="center" mx="8" p="6">
+                        {t('Welcome to IQ180')}
+                        </Text>
                 </Box>
                 <Box>
                     <FormControl p="16" mx="4" onSubmit={handleSubmit}>
-                        <FormLabel>
-                            Please tell us your name
-                        </FormLabel>
+                        <FormLabel color='gray.600'>
+                            {t('Please tell us your name')}
+                            </FormLabel>
+                  
                         <Input
-                            placeholder="Player name"
+                            placeholder={t("Player name")}
                             value={name}
                             onKeyDown={handleKeyDown}
                             onChange={(e) => setName(e.target.value)}
@@ -106,7 +105,7 @@ function NameForm() {// to handle add todo
                         my="4"
                         onClick={handleSubmit}
                     >
-                        Create game
+                        {t('Create game')}
                     </Button>
                     <Popover>
                         <PopoverTrigger>
@@ -115,7 +114,7 @@ function NameForm() {// to handle add todo
                                 variantColor="orange"
                                 my="4"
                             >
-                                Join game
+                                {t('Join game')}
                             </Button>
                         </PopoverTrigger>
                         <PopoverContent>
@@ -124,24 +123,17 @@ function NameForm() {// to handle add todo
                                 <PopoverCloseButton />
                                 <Stack spacing={4}>
                                     <FormControl p="8" onSubmit={handleSubmit}>
-                                        <FormLabel color="gray.600">
-                                            Room code
+                                        <FormLabel color='gray.600'>
+                                            {t('Room code')}
                                         </FormLabel>
                                         <Input
-                                            placeholder="Please enter room code"
+                                            placeholder={t("Please enter room code")}
                                             onKeyDown={handleKeyDown}
                                         />
                                     </FormControl>
-                                    <ButtonGroup
-                                        d="flex"
-                                        justifyContent="flex-end"
-                                    >
-                                        <Button
-                                            variantColor="orange"
-                                            onClick={handleSubmit}
-                                            m="4"
-                                        >
-                                            Join
+                                    <ButtonGroup d="flex" justifyContent="flex-end">
+                                        <Button variantColor="orange" onClick={handleSubmit} m="4">
+                                            {t('Join')}
                                         </Button>
                                     </ButtonGroup>
                                 </Stack>
