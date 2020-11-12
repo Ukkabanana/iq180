@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Box, Grid, Text } from '@chakra-ui/core'
 import ShowPlayer from '../../components/ShowPlayer'
 import { SocketContext } from '../../components/Socket';
+import { useTranslation } from 'react-i18next';
 
 function Waiting() {
     const { roomCode } = useContext(SocketContext)
@@ -9,7 +10,7 @@ function Waiting() {
         // handle socket submit
         console.log(`submit ${name}`)
     }
-
+    const { t } = useTranslation();
     const [player1, setPlayer1] = useState("Player1");
     const [player2, setPlayer2] = useState("Player2");
 
@@ -19,9 +20,9 @@ function Waiting() {
     return (
         <Grid className="container">
             <Box className="box">
-                <Text> Hello Players </Text>
-                <Text>Room code: {roomCode}</Text>
-                <Text>Players in the room</Text>
+                <Text> {t('Hello Players')} </Text>
+                <Text>{t('Room code')}: {roomCode}</Text>
+                <Text>{t('Players in the room')}</Text>
                 <ShowPlayer player1={player1} player2={player2} />
             </Box>
         </Grid>

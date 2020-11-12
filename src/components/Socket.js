@@ -2,6 +2,7 @@ import React, { useEffect, useState, useMemo } from 'react';
 import io from 'socket.io-client'
 import { useHistory } from "react-router-dom";
 import { useToast } from '@chakra-ui/core';
+import { useTranslation } from 'react-i18next';
 
 export const SocketContext = React.createContext({
     allPlayers: [],
@@ -18,6 +19,7 @@ export const SocketContext = React.createContext({
 
 
 function Socket({ children }) {
+    const { t } = useTranslation();
     const socket = useMemo(() => io("https://netcentric-iq180.herokuapp.com"), []);
 
     let history = useHistory();
@@ -86,11 +88,13 @@ function Socket({ children }) {
 
         //from Status.js
         socket.on("SET_REMAINING_TIME", (countdown) => {
+            const timeUpTrans = t("Time's up!");
+            const description = t("Think faster next round");
             setTime(countdown)
             if (countdown === 0) {
                 toast({
-                    title: "Time's up!",
-                    description: "Think faster next round",
+                    title: timeUpTrans,
+                    description: description,
                     status: "warning",
                     duration: 3000,
                     isClosable: true,
@@ -117,19 +121,24 @@ function Socket({ children }) {
 
 
         socket.on("SUBMIT_RESULT", (response) => {
+            const correctTitle = t("Your answer is correct!");
+            const correctDesc = t("Congratulations! your score +1");
+            const wrongTitle = t("Your answer is wrong");
+            const wrongDesc = t("Nice try, but try harder ;)");
+
             console.log(response)
             if (response.isOK) {
                 toast({
-                    title: "Your answer is correct!",
-                    description: "Congratulations! your score +1",
+                    title: correctTitle,
+                    description: correctDesc,
                     status: "success",
                     duration: 3000,
                     isClosable: true,
                 })
             } else if (!response.isOK) {
                 toast({
-                    title: "Your answer is wrong",
-                    description: "Nice try, but try harder ;)",
+                    title: wrongTitle,
+                    description: wrongDesc,
                     status: "error",
                     duration: 3000,
                     isClosable: true,
