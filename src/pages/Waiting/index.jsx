@@ -17,15 +17,16 @@ function Waiting() {
 
 
     return (
-        <Grid className="container">
-            <DrawerMenu />
-            <Box className="box">
-                <Text> Hello Players </Text>
-                <Text>Room code: {roomCode}</Text>
-                <Text>Players in the room</Text>
-                <ShowPlayer player1={player1} player2={player2} />
+        <Box mx={4}>
+            <Box d="flex" alignItems="center" justify="space-between" >
+                <Text fontSize="xl" fontWeight="bold"> Hello Players </Text>
+                <Text ml={4} fontSize="l" fontWeight="md">Room code: {roomCode}</Text>
             </Box>
-        </Grid>
+            <Box>
+                <Text mt={4} fontSize="l" fontWeight="bold">Players in the room</Text>
+            </Box>
+            <ShowPlayer player1={player1} player2={player2} />
+        </Box>
 
     );
 }

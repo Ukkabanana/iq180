@@ -12,7 +12,8 @@ import {
     Button,
     Grid,
     Box,
-    Text
+    Text,
+    Avatar
 } from '@chakra-ui/core';
 import { SocketContext } from '../components/Socket';
 import { useTranslation } from "react-i18next";
@@ -26,16 +27,18 @@ function ShowPlayer() {// to handle add todo
     // const [room, setR]
 
     return (
-        <Grid className="container">
-            <Box className="box">
-                {/* <NameForm submit={submit} /> */}
-                {/* <h1>{player1.name}</h1>
-                <h1>{player2.name}</h1> */}
-                <h1>{allPlayers[0]?.name}</h1>
-                <h1>{allPlayers[1]?.name}</h1>
-                <Button onClick={handleSubmit}>{t('START')}</Button>
+        <Box mt={2}>
+            <Box d="flex" alignItems="center" justify="space-between">
+                <Avatar name={allPlayers[0]?.name} m={2}></Avatar>
+                <Text>{allPlayers[0]?.name}</Text>
             </Box>
-        </Grid>
+            <Box d="flex" alignItems="center" justify="space-between">
+                <Avatar name={allPlayers[1]?.name} m={2}></Avatar>
+                <Text>{allPlayers[1]?.name}</Text>
+            </Box>
+            <Button my={8} onClick={handleSubmit}>{t('START')}</Button>
+        </Box>
+
     );
 }
 

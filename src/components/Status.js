@@ -11,11 +11,11 @@ import {
 } from '@chakra-ui/core';
 import { SocketContext } from './Socket';
 import { useTranslation } from "react-i18next";
+import UserAvatar from './UserAvatar'
 
 function Status() {// to handle status box
     const { t } = useTranslation();
     const [displayName, setDisplayName] = useState("");
-    const [displayScore, setDisplayScore] = useState(0);
 
     const { time, allPlayers, currentPlayer, round } = useContext(SocketContext)
 
@@ -42,17 +42,7 @@ function Status() {// to handle status box
                             {t('Round')}: {round}
                         </Text>
                     </Box>
-                    <Box bg="purple.800" p="4" textAlign="center" color="white">
-                        <Text>
-                            {t('Scoreboard')}
-                        </Text>
-                        <Text>
-                            {allPlayers[0].name} : {allPlayers[0].currentScore}
-                        </Text>
-                        <Text>
-                            {allPlayers[1].name} : {allPlayers[1].currentScore}
-                        </Text>
-                    </Box>
+                    <UserAvatar />
                 </Grid>
                 <Box textAlign="center">
                     <Text fontSize="4xl" fontWeight="800" color="purple.800">{t("It's")} {displayName}{t("'s Turn!")}</Text>
