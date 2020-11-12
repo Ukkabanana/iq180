@@ -6,11 +6,11 @@ function ThemeToggler() {
   const { colorMode, toggleColorMode } = useColorMode();
 
   return (
-    <Box textAlign="left" py={4} mr={12}>
+    <Box textAlign="left">
       <IconButton
-        icon={colorMode ==='light' ? 'moon' : 'sun'}
+        icon={colorMode === 'light' ? 'moon' : 'sun'}
         onClick={toggleColorMode}
-        variant="ghost"
+        variantColor="orange"
       />
     </Box>
   );
