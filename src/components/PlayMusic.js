@@ -7,8 +7,10 @@ import {
     CSSReset,
     Text
 } from '@chakra-ui/core';
+import { useTranslation } from 'react-i18next';
 
 function PlayMusic() {
+    const { t } = useTranslation();
     let audio = new Audio("/music1.mp3")
     const start = () => {
         audio.play()
@@ -24,9 +26,9 @@ function PlayMusic() {
         <ThemeProvider>
             <CSSReset />
             <Box>
-                <Text>Music :
-                <Button onClick={start}>Play</Button>
-                <Button onClick={pause}>Pause</Button>
+                <Text>{t('Music ')}:
+                <Button onClick={start}>{t('Play')}</Button>
+                <Button onClick={pause}>{t('Pause')}</Button>
                 </Text>
             </Box>
         </ThemeProvider>

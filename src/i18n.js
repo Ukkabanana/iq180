@@ -20,7 +20,10 @@ const resources = {
             "It's": "It's",
             "'s Turn!": "'s Turn!", 
             "Your answer": "Your answer",
-            "Enter": "Enter",   
+            "Enter": "Enter",
+            "Music": "Music",
+            "Play": "Play",
+            "Pause": "Pause",   
             "Seconds left!": "Seconds left!",    
         },
     },
@@ -41,6 +44,9 @@ const resources = {
             "'s Turn!": "",
             "Your answer": "คำตอบของคุณ",
             "Enter": "ส่งคำตอบ",
+            "Music": "ดนตรี",
+            "Play": "เล่น",
+            "Pause": "หยุด",
             "Seconds left!": "วินาทีจะหมดเวลา"
         },
     },
@@ -50,7 +56,7 @@ i18n.use(initReactI18next) // passes i18n down to react-i18next
     .init({
         resources,
         lng: "en",
-
+        fallbackLng: 'en',
         keySeparator: false, // we do not use keys in form messages.welcome
 
         interpolation: {
