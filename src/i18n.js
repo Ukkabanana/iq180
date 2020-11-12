@@ -40,6 +40,9 @@ const resources = {
             "Congratulations! your score +1": "Congratulations! your score +1",
             "Your answer is wrong": "Your answer is wrong",
             "Nice try, but try harder ;)": "Nice try, but try harder ;)",
+            "Setting": "Setting",
+            "Setting menu's here": "Setting menu's here",
+            "We love Netcentric Architecture XD" : "We love Netcentric Architecture XD",   
         },
     },
     th: {
@@ -79,6 +82,9 @@ const resources = {
             "Your answer is wrong": "คำตอบผิด",
             "Nice try, but try harder ;)": "พยายามได้ดี แต่พยายามให้มากกว่านี้หน่อยสิ ;)",
             "Result!": "ผลการแข่งขัน!"
+            "Setting": "การตั้งค่า",
+            "Setting menu's here": "เมนูการตั้งค่าอยู่ตรงนี้",
+            "We love Netcentric Architecture XD":"เรารักวิชานี้ ขอ เกรดดีๆให้เราหน่อยนะครับอาจารย์ XD",
         },
     },
 };
