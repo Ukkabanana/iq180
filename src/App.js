@@ -1,14 +1,12 @@
 import './App.css';
-import React, { useEffect, useState, useMemo } from 'react';
+import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
-  useHistory,
 } from "react-router-dom";
 
-import { Box, Grid, Button, ThemeProvider, CSSReset } from '@chakra-ui/core'
+import { Box, Grid, ThemeProvider, CSSReset,theme, ColorModeProvider, useColorMode, IconButton } from '@chakra-ui/core'
 import NameForm from './components/NameForm'
 import Waiting from './pages/Waiting/index'
 import Game from './pages/Game/index'
@@ -17,7 +15,8 @@ import Result from './pages/Result/index'
 import DrawerMenu from './components/DrawerMenu'
 import Socket from './components/Socket'
 import PlayMusic from './components/PlayMusic';
-
+import customTheme from './components/themes';
+import ThemeToggler from './components/ThemeToggler';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 
@@ -29,8 +28,10 @@ function App() {
         i18n.changeLanguage(lang)
     }
     return (
-        <ThemeProvider>
+        <ThemeProvider theme={customTheme}>
+        <ColorModeProvider>
         <CSSReset />
+        <ThemeToggler toggled={ThemeToggler} />
         <Box className="box">
         <PlayMusic />
         </Box>
@@ -74,6 +75,7 @@ function App() {
             </Switch>
             </Socket>
         </Router>
+        </ColorModeProvider>                           
         </ThemeProvider>
     )
  }

@@ -1,6 +1,5 @@
 
 import React, { useState, useEffect, useContext } from 'react';
-import { useHistory } from "react-router-dom";
 import {
     Text,
     Box,
@@ -11,6 +10,7 @@ import {
 } from '@chakra-ui/core';
 import { SocketContext } from './Socket';
 import { useTranslation } from "react-i18next";
+import customTheme from './themes'
 
 function Status() {// to handle status box
     const { t } = useTranslation();
@@ -27,7 +27,7 @@ function Status() {// to handle status box
             setDisplayName(allPlayers[1]?.name)
             console.log(displayName)
         }
-    }, [currentPlayer, allPlayers])
+    }, [currentPlayer, allPlayers, displayName])
 
 
 
