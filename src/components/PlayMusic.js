@@ -5,7 +5,8 @@ import {
     Box,
     ThemeProvider,
     CSSReset,
-    Text
+    Text,
+    ButtonGroup
 } from '@chakra-ui/core';
 import { useTranslation } from 'react-i18next';
 
@@ -26,10 +27,11 @@ function PlayMusic() {
         <ThemeProvider>
             <CSSReset />
             <Box>
-                <Text>{t('Music ')}:
-                <Button onClick={start}>{t('Play')}</Button>
-                <Button onClick={pause}>{t('Pause')}</Button>
-                </Text>
+                <Text fontWeight="semibold" fontSize="l">{t('Music ')}</Text>
+                <ButtonGroup spacing={2}>
+                    <Button variantColor="green" onClick={start}>{t('Play')}</Button>
+                    <Button variantColor="red" onClick={pause}>{t('Pause')}</Button>
+                </ButtonGroup>
             </Box>
         </ThemeProvider>
     )

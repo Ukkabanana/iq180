@@ -16,6 +16,7 @@ import {
     Stack,
     useDisclosure,
     Button,
+    Box,
 } from '@chakra-ui/core';
 
 function DrawerMenu() {
@@ -24,7 +25,7 @@ function DrawerMenu() {
 
     let lang = "th";
     const { t, i18n } = useTranslation();
-    const changeLanguage = () =>{
+    const changeLanguage = () => {
         lang = i18next.language === "en" ? "th" : "en";
         i18n.changeLanguage(lang)
     }
@@ -45,9 +46,12 @@ function DrawerMenu() {
                     <DrawerCloseButton />
                     <DrawerHeader>{t('Setting')}</DrawerHeader>
                     <DrawerBody>
-                        <Text>{t("Setting menu's here")}</Text>
-                        <ThemeToggler />
-                        <PlayMusic />
+                        <Box my={4}>
+                            <ThemeToggler />
+                        </Box>
+                        <Box my={4}>
+                            <PlayMusic />
+                        </Box>
                         <Button onClick={() => changeLanguage()}>{t('Change Language')}</Button>
                     </DrawerBody>
                     <DrawerFooter>
