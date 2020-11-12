@@ -21,6 +21,9 @@ import {
 import { SocketContext } from './Socket';
 import i18n from "i18next";
 import { useTranslation } from "react-i18next";
+import customTheme from './themes';
+import colorMode from './ThemeToggler';
+
 
 function NameForm() {// to handle add todo
     const [name, setName] = useState("");
@@ -69,11 +72,14 @@ function NameForm() {// to handle add todo
         }
     }
 
+    
     return (
-        <ThemeProvider>
+        <ThemeProvider theme={customTheme}>
             <CSSReset />
-            <Box borderWidth="1px" rounded="lg" mx="24" my="32" boxShadow="sm">
+            <Box borderWidth="1px" rounded="lg" mx="24" my="32" boxShadow="sm">  
+            {/* bg="palettes.orange.background" */}
                 <Box>
+
                     <Text fontSize="4xl" color='blue.500' textAlign="center" mx="8" p="6">
                         {t('Welcome to IQ180')}
                         </Text>
@@ -83,11 +89,12 @@ function NameForm() {// to handle add todo
                         <FormLabel color='gray.600'>
                             {t('Please tell us your name')}
                             </FormLabel>
+                  
                         <Input
                             placeholder={t("Player name")}
                             value={name}
                             onKeyDown={handleKeyDown}
-                            onChange={e => setName(e.target.value)}
+                            onChange={(e) => setName(e.target.value)}
                         />
                     </FormControl>
                 </Box>
@@ -133,7 +140,6 @@ function NameForm() {// to handle add todo
                             </FocusLock>
                         </PopoverContent>
                     </Popover>
-
                 </ButtonGroup>
             </Box>
         </ThemeProvider>

@@ -13,10 +13,11 @@ import {
     Stack
 } from '@chakra-ui/core';
 import { SocketContext } from './Socket';
+import { useTranslation } from 'react-i18next';
 
 function Numbers() {
 
-
+    const { t } = useTranslation();
     const { numbers, answer, socket, currentPlayer, myUID } = useContext(SocketContext)
     const [isCurrent, setIsCurrent] = useState(true);
     const [userAnswer, setUserAnswer] = useState("");
@@ -91,7 +92,7 @@ function Numbers() {
         <Stack spacing={4}>
             <Box d="flex" alignItems="center" justify="space-between">
                 {notUsed.map((number, index) => (
-                    <Box key={index} bg="gray.100" mx="2" p="4" >
+                    <Box key={index} bg="orange.400" mx="2" p="4" >
                         {number}
                     </Box>
                 ))}
@@ -100,7 +101,7 @@ function Numbers() {
                 {answer}
             </Box>
             <Input
-                placeholder="Your answer"
+                placeholder={t("Your answer")}
                 value={userAnswer}
                 onKeyDown={handleKeyDown}
                 onChange={handleChange}
@@ -112,7 +113,7 @@ function Numbers() {
                 my="4"
                 onClick={checkAnswer}
             >
-                Enter
+                {t("Enter")}
             </Button>
         </Stack>
     );
