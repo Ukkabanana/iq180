@@ -36,7 +36,9 @@ function ShowPlayer() {// to handle add todo
                 <Avatar name={allPlayers[1]?.name} m={2}></Avatar>
                 <Text>{allPlayers[1]?.name}</Text>
             </Box>
-            <Button my={8} onClick={handleSubmit}>{t('START')}</Button>
+            <Box display="flex" justifyContent="center">
+                <Button variantColor="orange" my={8} onClick={handleSubmit}>{t('START')}</Button>
+            </Box>
         </Box>
 
     );

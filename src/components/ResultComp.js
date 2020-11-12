@@ -12,23 +12,23 @@ import {
     Button,
     Grid,
     Box,
-    CSSReset
+    Text
 } from '@chakra-ui/core';
 import { SocketContext } from './Socket';
 import { useTranslation } from "react-i18next";
 
 function ResultComp() {
-    const {t} = useTranslation();
+    const { t } = useTranslation();
     const { socket, allPlayers, myUID } = useContext(SocketContext)
     const [name, setName] = useState("");
     const [result, setResult] = useState("");
-    const victoryString = t('Victory');
-    const drawString = t('Draw');
-    const defeatString = t('Defeat');
+    const victoryString = t("Victory");
+    const drawString = t("Draw");
+    const defeatString = t("Defeat");
 
     useEffect(() => {
         if (myUID === allPlayers[0]?.UID) {
-            setName(allPlayers[0].name)
+            setName(allPlayers[0]?.name)
             if (allPlayers[0]?.currentScore > allPlayers[1]?.currentScore) {
                 setResult(victoryString)
             } else if (allPlayers[0]?.currentScore < allPlayers[1]?.currentScore) {
@@ -48,16 +48,23 @@ function ResultComp() {
         }
     }, [])
     return (
-        <Box borderWidth="1px" rounded="lg" mx="24" my="32" boxShadow="sm">
-            <Grid className="container">
-                <Box className="box">
-                    <h3> {name}{t("'s")} </h3>
-                    <h1>{result}</h1>
+        <Box d="flex" justifyContent="center">
+            <Grid>
+                <Box d="flex" justifyContent="center">
+                    <Text fontWeight="bold" fontSize="4xl">{t("Result!")}</Text>
+                </Box>
+                <Box d="flex" justifyContent="center">
+                    <Text fontSize="2xl" fontWeight="semibold"> {name}{t("'s")} </Text>
+                </Box>
+                <Box d="flex" justifyContent="center">
+                    <Text fontSize="6xl" fontWeight="bold" color="orange.400">{result}</Text>
+                </Box>
+                <Box>
                     <Link to="/">
-                        <Button bg="teal">{t("Quit")}</Button>
+                        <Button variantColor="orange" m={4}>{t("Quit")}</Button>
                     </Link>
                     <Link to="/waiting">
-                        <Button bg="teal">{t("Play Again")}</Button>
+                        <Button variantColor="orange" m={4}>{t("Play Again")}</Button>
                     </Link>
                 </Box>
             </Grid>

@@ -37,7 +37,7 @@ function Status() {// to handle status box
             <CSSReset />
             <Flex alignItems="center" justify="space-between">
                 <Grid gap={2}>
-                    <Box bg="purple.800" p="4" textAlign="center" color="white" >
+                    <Box bg="purple.800" p="4" textAlign="center" color="white" rounded="lg" >
                         <Text>
                             {t('Round')}: {round}
                         </Text>

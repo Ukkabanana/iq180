@@ -34,14 +34,14 @@ function Game() {
   }, [])
 
   return (
-    <Grid className="container">
+    <Box className="container">
       <Box className="box">
         <Status />
       </Box>
       <Box d="flex" justifyContent="center" alignSelf="flex-top">
         <Numbers />
       </Box>
-    </Grid>
+    </Box>
   )
 }
 
