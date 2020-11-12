@@ -22,25 +22,28 @@ function ResultComp() {
     const { socket, allPlayers, myUID } = useContext(SocketContext)
     const [name, setName] = useState("");
     const [result, setResult] = useState("");
+    const victoryString = t('Victory');
+    const drawString = t('Draw');
+    const defeatString = t('Defeat');
 
     useEffect(() => {
         if (myUID === allPlayers[0]?.UID) {
             setName(allPlayers[0].name)
             if (allPlayers[0]?.currentScore > allPlayers[1]?.currentScore) {
-                setResult("Victory")
+                setResult(victoryString)
             } else if (allPlayers[0]?.currentScore < allPlayers[1]?.currentScore) {
-                setResult("Defeat")
+                setResult(defeatString)
             } else {
-                setResult("Draw")
+                setResult(drawString)
             }
         } else if (myUID === allPlayers[1]?.UID) {
             setName(allPlayers[1].name)
             if (allPlayers[1]?.currentScore > allPlayers[0]?.currentScore) {
-                setResult("Victory")
+                setResult(victoryString)
             } else if (allPlayers[1]?.currentScore < allPlayers[0]?.currentScore) {
-                setResult("Defeat")
+                setResult(defeatString)
             } else {
-                setResult("Draw")
+                setResult(drawString)
             }
         }
     }, [])
@@ -48,7 +51,7 @@ function ResultComp() {
         <Box borderWidth="1px" rounded="lg" mx="24" my="32" boxShadow="sm">
             <Grid className="container">
                 <Box className="box">
-                    <h3> {name}'s </h3>
+                    <h3> {name}{t("'s")} </h3>
                     <h1>{result}</h1>
                     <Link to="/">
                         <Button bg="teal">{t("Quit")}</Button>
