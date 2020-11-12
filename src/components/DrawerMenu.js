@@ -31,7 +31,7 @@ function DrawerMenu() {
     return (
         <>
             <Button ref={btnRef} variantColor="teal" mx="4" my="4" onClick={onOpen}>
-                Setting
+                {t('Setting')}
             </Button>
             <Drawer
                 isOpen={isOpen}
@@ -43,15 +43,15 @@ function DrawerMenu() {
                 <DrawerOverlay />
                 <DrawerContent>
                     <DrawerCloseButton />
-                    <DrawerHeader>Setting</DrawerHeader>
+                    <DrawerHeader>{t('Setting')}</DrawerHeader>
                     <DrawerBody>
-                        <Text>Setting menu's here</Text>
+                        <Text>{t("Setting menu's here")}</Text>
                         <ThemeToggler />
                         <PlayMusic />
                         <Button onClick={() => changeLanguage()}>{t('Change Language')}</Button>
                     </DrawerBody>
                     <DrawerFooter>
-                        <Text>We love Netcentric Architecture XD</Text>
+                        <Text>{t('We love Netcentric Architecture XD')}</Text>
                     </DrawerFooter>
                 </DrawerContent>
             </Drawer>
