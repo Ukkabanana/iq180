@@ -40,10 +40,13 @@ function App() {
 
         <Router>
           <Socket>
-            <PlayMusic />
+            <Box d="flex" justifyContent="space-between">
+              <DrawerMenu />
+              <PlayMusic />
+            </Box>
             <Switch>
               <Route exact path="/">
-                <DrawerMenu />
+                {/* <DrawerMenu /> */}
                 <Grid className="container">
                   <Box className="box">
                     <NameForm />
@@ -51,19 +54,19 @@ function App() {
                 </Grid>
               </Route>
               <Route path="/game">
-                <DrawerMenu />
+                {/* <DrawerMenu /> */}
                 <Game />
               </Route>
               <Route path="/waiting">
-                <DrawerMenu />
+                {/* <DrawerMenu /> */}
                 <Waiting />
               </Route>
               <Route path="/round">
-                <DrawerMenu />
+                {/* <DrawerMenu /> */}
                 <Round />
               </Route>
               <Route path="/result">
-                <DrawerMenu />
+                {/* <DrawerMenu /> */}
                 <Result />
               </Route>
             </Switch>

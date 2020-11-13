@@ -54,6 +54,7 @@ const resources = {
             "- Player who can solve the equation will receive 1 point.": "- Player who can solve the equation will receive 1 point.",
             "- If both players can solve the equation, player who spend less time will receive 1 point.": "- If both players can solve the equation, player who spend less time will receive 1 point.",
             "- And the player who get the higher score is the winner!": "- And the player who get the higher score is the winner!",
+            "By score of": "By score of",
         },
     },
     th: {
@@ -109,7 +110,8 @@ const resources = {
             "- Player who can solve the equation will receive 1 point.": "-เมื่อตอบถูกจะได้ 1 คะแนน เมื่อตอบผิดก็ไม่ได้เช่นกัน.",
             "- If both players can solve the equation, player who spend less time will receive 1 point.": "-ถ้าตอบถูกทั้งคู่ คนที่ตอบได้ไวกว่าจะได้คะแนน",
             "- And the player who get the higher score is the winner!": "- และคนที่ได้คะแนนมากที่สุดคือผู้ชนะ!",
-            "Close": "ปิด"
+            "Close": "ปิด",
+            "By score of": "ด้วยคะแนน"
 
         },
     },

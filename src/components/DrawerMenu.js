@@ -56,9 +56,9 @@ function DrawerMenu() {
                         <Box my={4}>
                             <ThemeToggler />
                         </Box>
-                        <Box my={4}>
+                        {/* <Box my={4}>
                             <PlayMusic />
-                        </Box>
+                        </Box> */}
                         <Box my={4}>
                             <Button onClick={() => changeLanguage()}>{t('Change Language')}</Button>
                         </Box>

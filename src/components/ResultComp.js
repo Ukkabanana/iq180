@@ -22,6 +22,7 @@ function ResultComp() {
     const { socket, allPlayers, myUID } = useContext(SocketContext)
     const [name, setName] = useState("");
     const [result, setResult] = useState("");
+    const [userScore, setUserScore] = useState(0);
     const victoryString = t("Victory");
     const drawString = t("Draw");
     const defeatString = t("Defeat");
@@ -29,6 +30,7 @@ function ResultComp() {
     useEffect(() => {
         if (myUID === allPlayers[0]?.UID) {
             setName(allPlayers[0]?.name)
+            setUserScore(allPlayers[0]?.currentScore)
             if (allPlayers[0]?.currentScore > allPlayers[1]?.currentScore) {
                 setResult(victoryString)
             } else if (allPlayers[0]?.currentScore < allPlayers[1]?.currentScore) {
@@ -38,6 +40,7 @@ function ResultComp() {
             }
         } else if (myUID === allPlayers[1]?.UID) {
             setName(allPlayers[1].name)
+            setUserScore(allPlayers[1]?.currentScore)
             if (allPlayers[1]?.currentScore > allPlayers[0]?.currentScore) {
                 setResult(victoryString)
             } else if (allPlayers[1]?.currentScore < allPlayers[0]?.currentScore) {
@@ -58,6 +61,9 @@ function ResultComp() {
                 </Box>
                 <Box d="flex" justifyContent="center">
                     <Text fontSize="6xl" fontWeight="bold" color="orange.400">{result}</Text>
+                </Box>
+                <Box d="flex" justifyContent="center">
+                    <Text fontSize="2xl" fontWeight="semibold">{t("By score of")}: {userScore}</Text>
                 </Box>
                 <Box>
                     <Link to="/">
